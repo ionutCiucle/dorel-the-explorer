@@ -1,0 +1,34 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/constants.scss";
+
+.dtx__app-container {
+  @include flex(column, space-between, stretch);
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+
+  > header {
+    padding: $padding-XL;
+  }
+
+  &__body {
+    @include flex(row, space-between, stretch);
+    width: 100%;
+    flex: 1;
+
+    > nav {
+      width: 300px;
+    }
+
+    > aside {
+      @include flex(row, space-between, stretch);
+      flex: 1;
+    }
+
+    > nav,
+    aside {
+      border: 1px solid black;
+      padding: $padding-XL;
+    }
+  }
+}
