@@ -9,8 +9,8 @@ import {
 import { useAppSelector } from "../../state-management/hooks";
 import { Item } from "../../types";
 import { ItemType } from "../../enums";
-import "./AppContainer.scss";
 import { AnyAction } from "@reduxjs/toolkit";
+import "./AppContainer.scss";
 
 export const AppContainer = () => {
   const dispatch = useAppDispatch();
