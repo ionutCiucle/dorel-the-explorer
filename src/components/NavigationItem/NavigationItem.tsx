@@ -4,7 +4,7 @@ import { Item } from "../../types";
 import { ItemType } from "../../enums";
 import "./NavigationItem.scss";
 
-type Props = Item & {
+export type Props = Item & {
   onClick: (item: Item) => void;
 };
 
