@@ -1,25 +1,19 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { navItems } from "../../mockData";
+import { AsyncThunkAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { updateTreeItem } from "./utils";
+import { fetchNavigationItems } from "./thunks";
 import { Item } from "../../types";
 
 interface NavigationItemsState {
   items: Item[];
   selectedItem: Item | null;
+  loading: boolean;
 }
 
 const initialState: NavigationItemsState = {
   items: [],
   selectedItem: null,
+  loading: false,
 };
-
-export const fetchNavigationItems = createAsyncThunk(
-  "navigationItems/fetchNavigationItems",
-  () =>
-    new Promise((resolve) => {
-      setTimeout(resolve, 300);
-    })
-);
 
 export const navigationItemsSlice = createSlice({
   name: "navigationItems",
@@ -35,9 +29,22 @@ export const navigationItemsSlice = createSlice({
         (item) => (item.open = false)
       );
     },
-    fetchNavigationItems: (state) => {
-      setTimeout(() => (state.items = navItems), 300);
-    },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchNavigationItems.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(
+        fetchNavigationItems.fulfilled,
+        (state, action: PayloadAction<Item[]>) => {
+          state.loading = false;
+          state.items = action.payload;
+        }
+      )
+      .addCase(fetchNavigationItems.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
 
