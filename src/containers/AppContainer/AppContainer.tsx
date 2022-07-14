@@ -1,61 +1,7 @@
 import React from "react";
 import NavigationTree from "../../components/NavigationTree";
-import { Item } from "../../types";
-import { ItemType } from "../../enums";
+import { navItems } from "../../mockData";
 import "./AppContainer.scss";
-
-const navItems: Item[] = [
-  {
-    name: "Fruit",
-    type: ItemType.Folder,
-    open: false,
-    children: [
-      {
-        name: "Orange",
-        type: ItemType.File,
-        open: false,
-        // children: [],
-      },
-      {
-        name: "Apple",
-        type: ItemType.File,
-        open: false,
-        // children: [],
-      },
-      {
-        name: "Apple",
-        type: ItemType.File,
-        open: false,
-        // children: [],
-      },
-    ],
-  },
-  {
-    name: "Veggies",
-    type: ItemType.Folder,
-    open: false,
-    children: [
-      {
-        name: "Carrot",
-        type: ItemType.File,
-        open: false,
-        // children: [],
-      },
-      {
-        name: "Potato",
-        type: ItemType.File,
-        open: false,
-        // children: [],
-      },
-      {
-        name: "Aubergine",
-        type: ItemType.File,
-        open: false,
-        // children: [],
-      },
-    ],
-  },
-];
 
 export const AppContainer = () => {
   return (

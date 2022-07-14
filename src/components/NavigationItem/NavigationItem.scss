@@ -15,9 +15,14 @@
     margin-right: $padding-S;
   }
 
-  border-top: 1px solid $grey1;
+  > h3 {
+    margin: 0;
+  }
+
+  border-bottom: 1px solid $grey1;
 
   &:last-child {
-    border-bottom: 1px solid $grey1;
+    // border-top: 1px solid $grey1;
+    border-bottom: none;
   }
 }
