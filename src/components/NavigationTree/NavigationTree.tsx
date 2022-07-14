@@ -3,14 +3,15 @@ import "./NavigationTree.scss";
 
 type Props = {
   items: any[];
+  title: string;
 };
 
-export const NavigationTree = ({ items }: Props) => {
+const NavigationTree = ({ items, title }: Props) => {
   return (
     <div className="dtx__navigation-tree">
-      <h1>Navi</h1>
+      <h1>{title}</h1>
     </div>
   );
 };
 
-export default React.memo(NavigationTree);
+export default NavigationTree;
