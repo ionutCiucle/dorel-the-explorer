@@ -13,7 +13,7 @@ export const AppContainer = () => {
 
   useEffect(() => {
     dispatch(fetchNavigationItems());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="dtx__app-container">

@@ -5,6 +5,6 @@ export const fetchNavigationItems = createAsyncThunk(
   "navigationItems/fetchNavigationItems",
   () => Promise.resolve(navItems)
   // new Promise((resolve) => {
-  //   setTimeout(() => navItems, 300);
+  //   setTimeout(() => resolve(navItems), 300);
   // })
 );

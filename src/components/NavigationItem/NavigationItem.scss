@@ -9,6 +9,13 @@
   cursor: pointer;
   padding: $padding-M;
   color: $grey1;
+  user-select: none;
+  background-color: $dutch-white;
+  transition: background-color 0.05s linear;
+
+  &:hover {
+    background-color: darken($dutch-white, 10%);
+  }
 
   &__icon {
     font-size: 15px;
