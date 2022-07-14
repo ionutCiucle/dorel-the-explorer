@@ -10,6 +10,7 @@ import { useAppSelector } from "../../state-management/hooks";
 import { Item } from "../../types";
 import { ItemType } from "../../enums";
 import "./AppContainer.scss";
+import { AnyAction } from "@reduxjs/toolkit";
 
 export const AppContainer = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ export const AppContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchNavigationItems());
+    dispatch(fetchNavigationItems() as unknown as AnyAction);
   }, [dispatch]);
 
   const handleNavigationItemClick = ({ id, open, type }: Item) => {
