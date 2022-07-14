@@ -11,9 +11,24 @@ export const navItems: Item[] = [
       {
         id: "XXX__0__0",
         name: "Orange",
-        type: ItemType.File,
-        open: false,
-        // children: [],
+        type: ItemType.Folder,
+        open: true,
+        children: [
+          {
+            id: "XXX__0__0__0",
+            name: "Red",
+            type: ItemType.File,
+            open: true,
+            children: [],
+          },
+          {
+            id: "XXX__0__0__1",
+            name: "Regular",
+            type: ItemType.File,
+            open: true,
+            children: [],
+          },
+        ],
       },
       {
         id: "XXX__0__1",

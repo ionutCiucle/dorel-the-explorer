@@ -29,7 +29,7 @@ const NavigationTree = ({ items, title }: Props) => {
 
   return (
     <div className="dtx__navigation-tree">
-      <span>{title}</span>
+      <h3>{title}</h3>
       <div className="nav-items">{renderItems(items)}</div>
     </div>
   );
