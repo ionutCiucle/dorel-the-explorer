@@ -1,4 +1,4 @@
-import { AsyncThunkAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { updateTreeItem } from "./utils";
 import { fetchNavigationItems } from "./thunks";
 import { Item } from "../../types";

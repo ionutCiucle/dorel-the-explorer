@@ -4,7 +4,11 @@ import { Item } from "../../types";
 import { ItemType } from "../../enums";
 import "./NavigationItem.scss";
 
-const NavigationItem = ({ name, type, open }: Item) => {
+type Props = Item & {
+  onClick: (item: Item) => void;
+};
+
+const NavigationItem = ({ id, name, type, open, onClick }: Props) => {
   const renderIcon = (type: ItemType) => {
     let IconMarkup;
 
@@ -28,7 +32,10 @@ const NavigationItem = ({ name, type, open }: Item) => {
   };
 
   return (
-    <div className="dtx__navigation-item">
+    <div
+      className="dtx__navigation-item"
+      onClick={() => onClick({ id, name, type, open })}
+    >
       {renderIcon(type)}
       <h3>{name}</h3>
     </div>

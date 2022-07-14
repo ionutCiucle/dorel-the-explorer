@@ -3,17 +3,24 @@ import NavigationItem from "../NavigationItem";
 import { Item } from "../../types";
 import "./NavigationTree.scss";
 
-type Props = {
+export type Props = {
   items: Item[];
   title: string;
+  onClickItem: (item: Item) => void;
 };
 
-const NavigationTree = ({ items, title }: Props) => {
+const NavigationTree = ({ items, title, onClickItem }: Props) => {
   const renderItems = (items: Item[]) => {
     return items.map(({ id, type, open, name, children }) => {
       return (
         <div className="nav-item-level" key={id}>
-          <NavigationItem id={id} type={type} open={open} name={name} />
+          <NavigationItem
+            id={id}
+            type={type}
+            open={open}
+            name={name}
+            onClick={onClickItem}
+          />
           {!!children && open && (
             <div className="nav-item-level">{renderItems(children)}</div>
           )}

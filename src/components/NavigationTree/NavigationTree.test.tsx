@@ -1,11 +1,12 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NavigationTree from "./NavigationTree";
+import NavigationTree, { Props } from "./NavigationTree";
 
-const getBaseProps = () =>
+const getBaseProps = (): Props =>
   Object.freeze({
     title: "Some title",
     items: [],
+    onClickItem: jest.fn(),
   });
 
 describe("<NavigationTree/>", () => {
