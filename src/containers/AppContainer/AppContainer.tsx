@@ -22,12 +22,10 @@ export const AppContainer = () => {
   }, [dispatch]);
 
   const handleNavigationItemClick = ({ id, open, type }: Item) => {
+    const folderAction = open ? closeFolder : openFolder;
+
     if (type === ItemType.Folder) {
-      if (open) {
-        dispatch(closeFolder(id));
-      } else {
-        dispatch(openFolder(id));
-      }
+      dispatch(folderAction(id));
     }
   };
 
