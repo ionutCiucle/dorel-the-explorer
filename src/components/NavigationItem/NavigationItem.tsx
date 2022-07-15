@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillFileText, AiFillFolderOpen, AiFillFolder } from "react-icons/ai";
+import ItemIcon from "../ItemIcon";
 import { Item } from "../../types";
 import { ItemType } from "../../enums";
 import "./NavigationItem.scss";
@@ -9,34 +9,12 @@ export type Props = Item & {
 };
 
 const NavigationItem = ({ id, name, type, open, onClick }: Props) => {
-  const renderIcon = (type: ItemType) => {
-    let IconMarkup;
-
-    switch (type) {
-      case ItemType.Folder: {
-        IconMarkup = open ? AiFillFolderOpen : AiFillFolder;
-        break;
-      }
-
-      case ItemType.File: {
-        IconMarkup = AiFillFileText;
-        break;
-      }
-
-      default: {
-        return null;
-      }
-    }
-
-    return <IconMarkup className="dtx__navigation-item__icon" />;
-  };
-
   return (
     <div
       className="dtx__navigation-item"
       onClick={() => onClick({ id, name, type, open })}
     >
-      {renderIcon(type)}
+      <ItemIcon open={open} type={type} />
       <h3>{name}</h3>
     </div>
   );

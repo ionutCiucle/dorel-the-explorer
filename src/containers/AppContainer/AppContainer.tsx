@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ObjectDetail from "../ObjectDetail";
 import NavigationTree from "../../components/NavigationTree";
 import { useAppDispatch } from "../../state-management/hooks";
 import { fetchNavigationItems } from "../../state-management/item-explorer/thunks";
@@ -41,7 +42,9 @@ export const AppContainer = () => {
             onClickItem={handleNavigationItemClick}
           />
         </nav>
-        <aside>Hello again</aside>
+        <aside>
+          <ObjectDetail />
+        </aside>
       </section>
     </div>
   );
