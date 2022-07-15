@@ -1,7 +1,6 @@
 import React from "react";
 import ItemIcon from "../ItemIcon";
 import { Item } from "../../types";
-import { ItemType } from "../../enums";
 import "./NavigationItem.scss";
 
 export type Props = Item & {
@@ -14,7 +13,11 @@ const NavigationItem = ({ id, name, type, open, onClick }: Props) => {
       className="dtx__navigation-item"
       onClick={() => onClick({ id, name, type, open })}
     >
-      <ItemIcon open={open} type={type} />
+      <ItemIcon
+        open={open}
+        type={type}
+        className="dtx__navigation-item__icon"
+      />
       <h3>{name}</h3>
     </div>
   );
