@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ObjectDetail from "../ObjectDetail";
 import NavigationTree from "../../components/NavigationTree";
 import { useAppDispatch } from "../../state-management/hooks";
-import { fetchNavigationItems } from "../../state-management/item-explorer/thunks";
+import { fetchAllNavigationItems } from "../../state-management/item-explorer/thunks";
 import {
   openFolder,
   closeFolder,
@@ -20,7 +20,7 @@ export const AppContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchNavigationItems() as unknown as AnyAction);
+    dispatch(fetchAllNavigationItems() as unknown as AnyAction);
   }, [dispatch]);
 
   const handleNavigationItemClick = ({ id, open, type }: Item) => {

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { updateTreeItem } from "./utils";
-import { fetchNavigationItems } from "./thunks";
+import { fetchAllNavigationItems } from "./thunks";
 import { Item } from "../../types";
 
 interface NavigationItemsState {
@@ -32,17 +32,17 @@ export const navigationItemsSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchNavigationItems.pending, (state) => {
+      .addCase(fetchAllNavigationItems.pending, (state) => {
         state.loading = true;
       })
       .addCase(
-        fetchNavigationItems.fulfilled,
+        fetchAllNavigationItems.fulfilled,
         (state, action: PayloadAction<Item[]>) => {
           state.loading = false;
           state.items = action.payload;
         }
       )
-      .addCase(fetchNavigationItems.rejected, (state) => {
+      .addCase(fetchAllNavigationItems.rejected, (state) => {
         state.loading = false;
       });
   },
