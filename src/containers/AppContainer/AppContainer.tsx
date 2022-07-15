@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ObjectDetail from "../ObjectDetail";
-import NavigationTree from "../../components/NavigationTree";
+// import NavigationTree from "../../components/SideNavigation/NavigationTree";
+import SideNavigation from "../../components/SideNavigation";
 import { useAppDispatch } from "../../state-management/hooks";
 import { fetchAllNavigationItems } from "../../state-management/item-explorer/thunks";
 import {
@@ -35,13 +36,12 @@ export const AppContainer = () => {
     <div className="dtx__app-container">
       <header>Welcome to Dorel's File Exploring App!</header>
       <section className="dtx__app-container__body">
-        <nav>
-          <NavigationTree
-            items={navigationItems}
-            title="Basket explorer"
-            onClickItem={handleNavigationItemClick}
-          />
-        </nav>
+        <SideNavigation
+          items={navigationItems}
+          title="Basket explorer"
+          onClickNavigationItem={handleNavigationItemClick}
+          loading
+        />
         <aside>
           <ObjectDetail />
         </aside>

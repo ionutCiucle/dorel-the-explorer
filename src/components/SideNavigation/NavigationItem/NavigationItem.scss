@@ -1,6 +1,6 @@
-@import "../../styles/mixins.scss";
-@import "../../styles/constants.scss";
-@import "../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/constants.scss";
+@import "../../../styles/colors.scss";
 
 .dtx__navigation-item {
   @include flex(row, flex-start, center);

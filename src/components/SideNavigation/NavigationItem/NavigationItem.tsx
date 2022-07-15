@@ -1,6 +1,6 @@
 import React from "react";
-import ItemIcon from "../ItemIcon";
-import { Item } from "../../types";
+import ItemIcon from "../../ItemIcon";
+import { Item } from "../../../types";
 import "./NavigationItem.scss";
 
 export type Props = Item & {

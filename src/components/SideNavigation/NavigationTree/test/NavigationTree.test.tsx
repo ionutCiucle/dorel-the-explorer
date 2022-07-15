@@ -1,9 +1,9 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { navItems } from "../../../mockData";
+import { navItems } from "../../../../mockData";
 import NavigationTree from "../NavigationTree";
 import { getBaseProps } from "./testData";
-import { ItemType } from "../../../enums";
+import { ItemType } from "../../../../enums";
 
 describe("<NavigationTree/>", () => {
   it("should render its title", () => {

@@ -1,5 +1,5 @@
 import { Props } from "../NavigationItem";
-import { ItemType } from "../../../enums";
+import { ItemType } from "../../../../enums";
 
 export const getBaseProps = (): Props =>
   Object.freeze({

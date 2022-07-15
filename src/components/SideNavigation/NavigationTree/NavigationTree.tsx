@@ -1,6 +1,6 @@
 import React from "react";
 import NavigationItem from "../NavigationItem";
-import { Item } from "../../types";
+import { Item } from "../../../types";
 import "./NavigationTree.scss";
 
 export type Props = {
