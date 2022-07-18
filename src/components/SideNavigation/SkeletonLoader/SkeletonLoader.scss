@@ -1,5 +1,14 @@
+@import "../../../styles/constants.scss";
+
 .dtx__side-navigation__skeleton-loader {
   .MuiSkeleton-rectangular {
-    margin-bottom: 10px;
+    margin: $padding-S;
+  }
+
+  list-style: none;
+  padding: 0;
+
+  > li {
+    margin-bottom: $padding-XL;
   }
 }
