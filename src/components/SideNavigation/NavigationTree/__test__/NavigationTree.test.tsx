@@ -6,14 +6,6 @@ import { getBaseProps } from "./testData";
 import { ItemType } from "../../../../enums";
 
 describe("<NavigationTree/>", () => {
-  it("should render its title", () => {
-    const props = getBaseProps();
-
-    render(<NavigationTree {...getBaseProps()} />);
-
-    expect(screen.getByText(props.title)).toBeInTheDocument();
-  });
-
   it("should be able to render a list item hierarchy", () => {
     const props = getBaseProps({ items: navItems });
 
