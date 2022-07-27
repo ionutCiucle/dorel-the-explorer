@@ -41,7 +41,6 @@ export const AppContainer = () => {
       <section className="dtx__app-container__body">
         <SideNavigation
           items={navigationItems}
-          title="Basket explorer"
           onClickNavigationItem={handleNavigationItemClick}
           loading={loadingNavigationItems}
         />

@@ -7,26 +7,16 @@ import "./SideNavigation.scss";
 export type Props = {
   loading: boolean;
   items: Item[];
-  title: string;
   onClickNavigationItem: (item: Item) => void;
 };
 
-const SideNavigation = ({
-  loading,
-  items,
-  title,
-  onClickNavigationItem,
-}: Props) => {
+const SideNavigation = ({ loading, items, onClickNavigationItem }: Props) => {
   return (
     <nav className="dtx__side-navigation">
       {loading ? (
         <SkeletonLoader />
       ) : (
-        <NavigationTree
-          items={items}
-          title={title}
-          onClickItem={onClickNavigationItem}
-        />
+        <NavigationTree items={items} onClickItem={onClickNavigationItem} />
       )}
     </nav>
   );

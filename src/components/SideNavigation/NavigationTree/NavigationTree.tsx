@@ -5,11 +5,10 @@ import "./NavigationTree.scss";
 
 export type Props = {
   items: Item[];
-  title: string;
   onClickItem: (item: Item) => void;
 };
 
-const NavigationTree = ({ items, title, onClickItem }: Props) => {
+const NavigationTree = ({ items, onClickItem }: Props) => {
   const renderItems = (items: Item[]) => {
     return items.map(({ id, type, open, name, children }) => {
       return (
