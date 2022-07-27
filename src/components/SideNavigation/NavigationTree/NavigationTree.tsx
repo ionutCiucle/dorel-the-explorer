@@ -31,7 +31,6 @@ const NavigationTree = ({ items, title, onClickItem }: Props) => {
 
   return (
     <div className="dtx__navigation-tree">
-      <h3>{title}</h3>
       <div className="nav-items">{renderItems(items)}</div>
     </div>
   );

@@ -19,6 +19,9 @@ export const AppContainer = () => {
   const navigationItems = useAppSelector(
     (state) => state.navigationItems.items
   );
+  const loadingNavigationItems = useAppSelector(
+    (state) => state.navigationItems.loading
+  );
 
   useEffect(() => {
     dispatch(fetchAllNavigationItems() as unknown as AnyAction);
@@ -40,7 +43,8 @@ export const AppContainer = () => {
           items={navigationItems}
           title="Basket explorer"
           onClickNavigationItem={handleNavigationItemClick}
-          loading
+          loading={loadingNavigationItems}
+          // loading
         />
         <aside>
           <ObjectDetail />

@@ -1,14 +1,25 @@
 @import "../../../styles/constants.scss";
+@import "../../../styles/mixins.scss";
 
 .dtx__side-navigation__skeleton-loader {
-  .MuiSkeleton-rectangular {
-    margin: $padding-S;
+  * {
+    box-sizing: border-box;
   }
 
   list-style: none;
   padding: 0;
+  margin: 0;
 
   > li {
-    margin-bottom: $padding-XL;
+    // @include flex(column, flex-start, flez-end);
+
+    .MuiSkeleton-rectangular {
+      margin: $padding-M;
+      padding-left: $padding-S;
+
+      &.child-item {
+        margin-left: $padding-XL;
+      }
+    }
   }
 }
