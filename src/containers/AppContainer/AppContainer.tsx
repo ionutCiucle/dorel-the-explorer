@@ -44,7 +44,6 @@ export const AppContainer = () => {
           title="Basket explorer"
           onClickNavigationItem={handleNavigationItemClick}
           loading={loadingNavigationItems}
-          // loading
         />
         <aside>
           <ObjectDetail />
