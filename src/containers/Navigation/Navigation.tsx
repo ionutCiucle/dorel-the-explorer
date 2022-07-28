@@ -15,10 +15,12 @@ import "./Navigation.scss";
 
 export const Navigation = () => {
   const dispatch = useAppDispatch();
+
   const navigationItems = useAppSelector((state) => state.navigation.items);
   const loadingNavigationItems = useAppSelector(
     (state) => state.navigation.loading
   );
+  const tabItems = useAppSelector((state) => state.tab.tabs);
 
   useEffect(() => {
     dispatch(fetchAllNavigationItems() as unknown as AnyAction);
@@ -32,11 +34,6 @@ export const Navigation = () => {
     }
   };
 
-  const mockTabs = [
-    { id: "1111", name: "Some file" },
-    { id: "222", name: "Some other file", active: true },
-  ];
-
   return (
     <div className="dtx__navigation">
       <SideNavigation
@@ -45,7 +42,7 @@ export const Navigation = () => {
         loading={loadingNavigationItems}
       />
       <aside>
-        <Tabs items={mockTabs} />
+        <Tabs items={tabItems} />
         <ObjectDetail />
       </aside>
     </div>

@@ -8,7 +8,7 @@ export type Item = {
   children?: Item[];
 };
 
-export type TabState = {
+export type TabItem = {
   id: string;
   name: string;
   active?: boolean;

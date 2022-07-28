@@ -1,9 +1,9 @@
-import { TabState } from "../../types";
+import { TabItem } from "../../types";
 import Tab from "./Tab";
 import "./Tabs.scss";
 
 type Props = {
-  items: TabState[];
+  items: TabItem[];
 };
 
 export const Tabs = ({ items }: Props) => {

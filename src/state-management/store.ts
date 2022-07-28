@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import navigationReducer from "./item-explorer/navigationSlice";
+import tabReducer from "./item-explorer/tabSlice";
 
 const logger = createLogger();
 
 export const store = configureStore({
   reducer: {
     navigation: navigationReducer,
+    tab: tabReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), logger],
 });

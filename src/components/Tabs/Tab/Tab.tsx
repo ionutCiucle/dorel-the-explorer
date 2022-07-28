@@ -10,7 +10,7 @@ type Props = {
 export const Tab = ({ id, name, active }: Props) => {
   return (
     <li className={`dtx__tab ${active ? "active" : ""}`}>
-      <Link to={`/file?${id}`}>{name}</Link>
+      <Link to={`/?${id}`}>{name}</Link>
     </li>
   );
 };

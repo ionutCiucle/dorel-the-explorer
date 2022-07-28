@@ -4,12 +4,12 @@ import { mockFetch } from "../../utils";
 import { fetchNavigationItemMock } from "./utils";
 
 export const fetchAllNavigationItems = createAsyncThunk(
-  "navigationItems/fetchAllNavigationItems",
+  "navigation/fetchAllNavigationItems",
   () => mockFetch(navItems)
 );
 
 export const fetchNavigationItem = createAsyncThunk(
-  "navigationItems/fetchNavigationItem",
+  "navigation/fetchNavigationItem",
   (id: string) => {
     const item = fetchNavigationItemMock(id, navItems);
 
