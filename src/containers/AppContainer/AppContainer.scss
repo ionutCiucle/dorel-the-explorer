@@ -18,22 +18,5 @@
     @include flex(row, space-between, stretch);
     width: 100%;
     flex: 1;
-
-    > nav {
-      width: 300px;
-      background-color: $dutch-white;
-    }
-
-    > aside {
-      @include flex(row, space-between, stretch);
-      flex: 1;
-      background-color: $pale-spring-bud;
-    }
-
-    > nav,
-    aside {
-      padding: $padding-XL;
-      height: 100%;
-    }
   }
 }
