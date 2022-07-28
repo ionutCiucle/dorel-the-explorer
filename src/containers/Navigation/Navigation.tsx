@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
+import Tabs from "../../components/Tabs";
+import ObjectDetail from "../ObjectDetail";
 import SideNavigation from "../../components/SideNavigation";
 import { useAppSelector, useAppDispatch } from "../../state-management/hooks";
 import { fetchAllNavigationItems } from "../../state-management/item-explorer/thunks";
@@ -30,6 +32,11 @@ export const Navigation = () => {
     }
   };
 
+  const mockTabs = [
+    { id: "1111", name: "Some file" },
+    { id: "222", name: "Some other file", active: true },
+  ];
+
   return (
     <div className="dtx__navigation">
       <SideNavigation
@@ -37,7 +44,10 @@ export const Navigation = () => {
         onClickNavigationItem={handleNavigationItemClick}
         loading={loadingNavigationItems}
       />
-      <aside></aside>
+      <aside>
+        <Tabs items={mockTabs} />
+        <ObjectDetail />
+      </aside>
     </div>
   );
 };

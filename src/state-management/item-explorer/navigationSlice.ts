@@ -16,7 +16,7 @@ const initialState: NavigationState = {
 };
 
 export const navigationSlice = createSlice({
-  name: "navigationItems",
+  name: "navigation",
   initialState: initialState,
   reducers: {
     openFolder: (state, action: PayloadAction<string>) => {
