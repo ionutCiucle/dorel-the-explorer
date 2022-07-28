@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
 import SideNavigation from "../../components/SideNavigation";
 import { useAppSelector, useAppDispatch } from "../../state-management/hooks";
@@ -11,11 +11,7 @@ import { ItemType } from "../../enums";
 import { Item } from "../../types";
 import "./Navigation.scss";
 
-type Props = {
-  // children: React.ReactNode;
-};
-
-export const Navigation = ({}: Props) => {
+export const Navigation = () => {
   const dispatch = useAppDispatch();
   const navigationItems = useAppSelector(
     (state) => state.navigationItems.items
