@@ -1,0 +1,34 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/constants.scss";
+@import "../../../styles/colors.scss";
+
+.dtx__navigation-item {
+  @include flex(row, flex-start, center);
+  width: 100%;
+  font-size: 12px;
+  cursor: pointer;
+  padding: $padding-M;
+  color: $grey1;
+  user-select: none;
+  background-color: $dutch-white;
+  transition: background-color 0.05s linear;
+
+  &:hover {
+    background-color: darken($dutch-white, 10%);
+  }
+
+  &__icon {
+    font-size: 15px;
+    margin-right: $padding-S;
+  }
+
+  > h3 {
+    margin: 0;
+  }
+
+  // border-bottom: 1px solid $grey1;
+
+  // &:last-child {
+  //   border-bottom: none;
+  // }
+}
