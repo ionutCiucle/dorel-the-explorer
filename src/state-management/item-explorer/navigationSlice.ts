@@ -3,19 +3,19 @@ import { updateTreeItem } from "./utils";
 import { fetchAllNavigationItems } from "./thunks";
 import { Item } from "../../types";
 
-interface NavigationItemsState {
+interface NavigationState {
   items: Item[];
   selectedItem: Item | null;
   loading: boolean;
 }
 
-const initialState: NavigationItemsState = {
+const initialState: NavigationState = {
   items: [],
   selectedItem: null,
   loading: false,
 };
 
-export const navigationItemsSlice = createSlice({
+export const navigationSlice = createSlice({
   name: "navigationItems",
   initialState: initialState,
   reducers: {
@@ -48,6 +48,6 @@ export const navigationItemsSlice = createSlice({
   },
 });
 
-export const { openFolder, closeFolder } = navigationItemsSlice.actions;
+export const { openFolder, closeFolder } = navigationSlice.actions;
 
-export default navigationItemsSlice.reducer;
+export default navigationSlice.reducer;

@@ -6,18 +6,16 @@ import { fetchAllNavigationItems } from "../../state-management/item-explorer/th
 import {
   openFolder,
   closeFolder,
-} from "../../state-management/item-explorer/navigationItemsSlice";
+} from "../../state-management/item-explorer/navigationSlice";
 import { ItemType } from "../../enums";
 import { Item } from "../../types";
 import "./Navigation.scss";
 
 export const Navigation = () => {
   const dispatch = useAppDispatch();
-  const navigationItems = useAppSelector(
-    (state) => state.navigationItems.items
-  );
+  const navigationItems = useAppSelector((state) => state.navigation.items);
   const loadingNavigationItems = useAppSelector(
-    (state) => state.navigationItems.loading
+    (state) => state.navigation.loading
   );
 
   useEffect(() => {
