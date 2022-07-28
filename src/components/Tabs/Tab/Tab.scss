@@ -3,13 +3,12 @@
 
 .dtx__tab {
   list-style: none;
-  background-color: white;
+  background-color: $ivory-dark;
   padding: $padding-S $padding-M;
   border-radius: 10px 10px 0 0;
-  border-bottom: 1px solid black;
 
   &.active {
-    border-bottom: 1px solid white;
+    background-color: $ivory;
   }
 
   a {
