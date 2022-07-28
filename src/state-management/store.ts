@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
-import navigationItemsReducer from "../state-management/item-explorer/navigationItemsSlice";
+import navigationReducer from "./item-explorer/navigationSlice";
 
 const logger = createLogger();
 
 export const store = configureStore({
   reducer: {
-    navigationItems: navigationItemsReducer,
+    navigation: navigationReducer,
   },
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), logger],
 });
