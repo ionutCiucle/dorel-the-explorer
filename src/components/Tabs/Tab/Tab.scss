@@ -1,7 +1,10 @@
 @import "../../../styles/constants.scss";
 @import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
 
 .dtx__tab {
+  @include flex(row, space-between, center);
+
   list-style: none;
   background-color: $ivory-dark;
   padding: $padding-S $padding-M;
@@ -15,5 +18,19 @@
     color: $grey1;
     text-decoration: none;
     font-size: 14px;
+  }
+
+  .close-button {
+    cursor: pointer;
+    margin-left: $padding-S;
+    color: $grey1;
+    background-color: transparent;
+    transition: background-color 0.075s linear;
+    border-radius: 2px;
+    padding: $padding-XS;
+
+    &:hover {
+      background-color: $grey-light;
+    }
   }
 }
