@@ -40,7 +40,10 @@ export const Navigation = () => {
     if (type === ItemType.Folder) {
       dispatch(folderAction(id));
     }
-    dispatch(addTab(clickedItem));
+
+    if (type === ItemType.File) {
+      dispatch(addTab(clickedItem));
+    }
 
     navigate(`/${id}`);
   };
