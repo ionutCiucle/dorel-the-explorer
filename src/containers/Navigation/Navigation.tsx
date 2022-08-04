@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
 import { useParams } from "react-router-dom";
 import Tabs from "../../components/Tabs";
-import ObjectDetail from "../ObjectDetail";
+import ObjectDetail from "../../components/ObjectDetail";
 import SideNavigation from "../../components/SideNavigation";
 import { useAppSelector, useAppDispatch } from "../../state-management/hooks";
 import { fetchAllNavigationItems } from "../../state-management/item-explorer/thunks";
@@ -45,7 +45,7 @@ export const Navigation = () => {
       />
       <aside>
         <Tabs items={tabItems} activeItemId={itemId!} />
-        <ObjectDetail />
+        <ObjectDetail itemId={itemId!} />
       </aside>
     </div>
   );
