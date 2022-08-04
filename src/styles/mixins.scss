@@ -4,3 +4,10 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+
+@mixin ellipsis($max-width: "100%") {
+  max-width: $max-width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

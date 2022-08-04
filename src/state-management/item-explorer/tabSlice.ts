@@ -9,7 +9,11 @@ interface TabState {
 const initialState: TabState = {
   tabs: [
     { id: "1111", name: "Some file" },
-    { id: "222", name: "Some other file", active: true },
+    {
+      id: "222",
+      name: "Some other file with a considerably long name",
+      active: true,
+    },
   ],
   selectedTabId: "",
 };
