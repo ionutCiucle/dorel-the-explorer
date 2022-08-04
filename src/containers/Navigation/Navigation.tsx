@@ -61,6 +61,7 @@ export const Navigation = () => {
     <div className="dtx__navigation">
       <SideNavigation
         items={navigationItems}
+        highlightedItemId={itemId!}
         onClickNavigationItem={handleNavigationItemClick}
         loading={loadingNavigationItems}
       />
