@@ -18,9 +18,12 @@ export const tabSlice = createSlice({
   name: "tab",
   initialState,
   reducers: {
-    // addTab(state, action: PayloadAction<TabItem>) {
-    //   state.tabs.push(action.payload);
-    // },
+    addTab(state, action: PayloadAction<TabItem>) {
+      state.tabs.push(action.payload);
+    },
+    removeTab(state, action: PayloadAction<string>) {
+      state.tabs = state.tabs.filter((tab) => tab.id !== action.payload);
+    },
   },
 });
 
