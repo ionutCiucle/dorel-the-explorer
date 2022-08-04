@@ -20,7 +20,11 @@ export const navigationSlice = createSlice({
   initialState: initialState,
   reducers: {
     openFolder: (state, action: PayloadAction<string>) => {
-      updateTreeItem(state.items, action.payload, (item) => (item.open = true));
+      updateTreeItem(state.items, action.payload, (item, parents) => {
+        item.open = true;
+        console.log(item);
+        console.log("PARENTS: ", parents);
+      });
     },
     closeFolder: (state, action: PayloadAction<string>) => {
       updateTreeItem(
