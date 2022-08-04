@@ -5,3 +5,7 @@ export const mockFetch = <T>(itemsToReturn: T): Promise<T> => {
     }, 1000);
   });
 };
+
+export const elementHasEllipsis = (element: HTMLElement) => {
+  return element.offsetWidth < element.scrollWidth;
+};

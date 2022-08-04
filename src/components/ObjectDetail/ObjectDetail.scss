@@ -1,0 +1,9 @@
+@import "../../styles/colors.scss";
+@import "../../styles/constants.scss";
+
+.dtx__object-detail {
+  width: 100%;
+  height: 100%;
+  background-color: $ivory;
+  padding: $padding-L;
+}
