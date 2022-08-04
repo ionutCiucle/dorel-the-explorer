@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
+import { useParams } from "react-router-dom";
 import Tabs from "../../components/Tabs";
 import ObjectDetail from "../ObjectDetail";
 import SideNavigation from "../../components/SideNavigation";
@@ -15,6 +16,7 @@ import "./Navigation.scss";
 
 export const Navigation = () => {
   const dispatch = useAppDispatch();
+  const { itemId } = useParams();
 
   const navigationItems = useAppSelector((state) => state.navigation.items);
   const loadingNavigationItems = useAppSelector(
@@ -42,7 +44,7 @@ export const Navigation = () => {
         loading={loadingNavigationItems}
       />
       <aside>
-        <Tabs items={tabItems} />
+        <Tabs items={tabItems} activeItemId={itemId!} />
         <ObjectDetail />
       </aside>
     </div>
