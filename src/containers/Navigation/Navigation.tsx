@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Tabs from "../../components/Tabs";
 import ObjectDetail from "../../components/ObjectDetail";
 import SideNavigation from "../../components/SideNavigation";
 import { useAppSelector, useAppDispatch } from "../../state-management/hooks";
 import { fetchAllNavigationItems } from "../../state-management/item-explorer/thunks";
+import {
+  addTab,
+  removeTab,
+} from "../../state-management/item-explorer/tabSlice";
 import {
   openFolder,
   closeFolder,
@@ -17,6 +21,7 @@ import "./Navigation.scss";
 export const Navigation = () => {
   const dispatch = useAppDispatch();
   const { itemId } = useParams();
+  const navigate = useNavigate();
 
   const navigationItems = useAppSelector((state) => state.navigation.items);
   const loadingNavigationItems = useAppSelector(
@@ -28,12 +33,20 @@ export const Navigation = () => {
     dispatch(fetchAllNavigationItems() as unknown as AnyAction);
   }, [dispatch]);
 
-  const handleNavigationItemClick = ({ id, open, type }: Item) => {
+  const handleNavigationItemClick = (clickedItem: Item) => {
+    const { id, open, type } = clickedItem;
     const folderAction = open ? closeFolder : openFolder;
 
     if (type === ItemType.Folder) {
       dispatch(folderAction(id));
     }
+    dispatch(addTab(clickedItem));
+
+    navigate(`/${id}`);
+  };
+
+  const handleTabCloseButtonClick = (tabId: string) => {
+    dispatch(removeTab(tabId));
   };
 
   return (
@@ -44,7 +57,11 @@ export const Navigation = () => {
         loading={loadingNavigationItems}
       />
       <aside>
-        <Tabs items={tabItems} activeItemId={itemId!} />
+        <Tabs
+          items={tabItems}
+          activeItemId={itemId!}
+          onTabCloseButtonClick={handleTabCloseButtonClick}
+        />
         <ObjectDetail itemId={itemId!} />
       </aside>
     </div>
