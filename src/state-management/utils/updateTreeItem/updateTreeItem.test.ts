@@ -59,4 +59,32 @@ describe("updateTreeItem()", () => {
 
     expect(updateSpy).toHaveBeenCalledWith(itemToFind, parentTrail);
   });
+
+  it("should handle items that have more than one element in the first level", () => {
+    const updateSpy = jest.fn();
+    const localMockItems = [
+      ...mockItems,
+      {
+        id: "2",
+        name: "Second",
+        type: ItemType.Folder,
+        open: true,
+        children: [
+          {
+            id: "2.1",
+            name: "Second.First",
+            type: ItemType.Folder,
+            open: true,
+          },
+        ],
+      },
+    ];
+
+    const itemToFind = localMockItems[1].children![0];
+    const parentTrail = [localMockItems[1]];
+
+    updateTreeItem(localMockItems, itemToFind.id, updateSpy);
+
+    expect(updateSpy).toHaveBeenCalledWith(itemToFind, parentTrail);
+  });
 });
