@@ -15,17 +15,16 @@ export const Tab = ({ id, name, active, onCloseButtonClick }: Props) => {
   const [hasEllipsis, setHasEllipsis] = useState(false);
   const containerRef = useRef<HTMLLIElement>(null);
 
-  const handleCloseButtonClick = () => {
-    onCloseButtonClick(id);
-  };
-
   useEffect(() => {
     const anchorEl = elementHasEllipsis(
-      // @ts-ignore
-      containerRef.current?.querySelector("a")
+      containerRef.current?.querySelector("a") as HTMLElement
     );
     setHasEllipsis(anchorEl);
   }, [name]);
+
+  const handleCloseButtonClick = () => {
+    onCloseButtonClick(id);
+  };
 
   const getAdditionalProps = () => (hasEllipsis ? { title: name } : {});
 
