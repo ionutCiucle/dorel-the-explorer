@@ -1,6 +1,6 @@
-import { Item } from "../../../../types";
-import { ItemType } from "../../../../enums";
-import updateTreeItem from "./updateTreeItem";
+import { Item } from "../../../types";
+import { ItemType } from "../../../enums";
+import { updateTreeItem } from "./index";
 
 const mockItems: Item[] = [
   {

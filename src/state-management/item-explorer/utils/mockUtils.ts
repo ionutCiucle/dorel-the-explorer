@@ -1,5 +1,5 @@
 import { Item } from "../../../types";
-import updateTreeItem from "./updateTreeItem";
+import { updateTreeItem } from "../../utils/updateTreeItem";
 
 export const fetchNavigationItemMock = (id: string, items: Item[]) => {
   let item = null;

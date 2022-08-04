@@ -8,6 +8,7 @@ export const AppContainer = () => {
       <header>Welcome to Dorel's File Exploring App!</header>
       <section className="dtx__app-container__body">
         <Routes>
+          {/* Fix route issue! */}
           <Route path="/:itemId" element={<Navigation />} />
         </Routes>
       </section>

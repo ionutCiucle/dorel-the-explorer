@@ -37,10 +37,9 @@ export const Navigation = () => {
     const { id, open, type } = clickedItem;
     const folderAction = open ? closeFolder : openFolder;
 
-    // if (type === ItemType.Folder) {
-    //   dispatch(folderAction(id));
-    // }
-    dispatch(folderAction(id));
+    if (type === ItemType.Folder) {
+      dispatch(folderAction(id));
+    }
 
     if (type === ItemType.File) {
       dispatch(addTab(clickedItem));

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { updateTreeItem } from "./utils";
+import { updateTreeItem } from "../utils/updateTreeItem";
 import { fetchAllNavigationItems } from "./thunks";
 import { Item } from "../../types";
 
@@ -20,10 +20,8 @@ export const navigationSlice = createSlice({
   initialState: initialState,
   reducers: {
     openFolder: (state, action: PayloadAction<string>) => {
-      updateTreeItem(state.items, action.payload, (item, parents) => {
+      updateTreeItem(state.items, action.payload, (item) => {
         item.open = true;
-        console.log(item);
-        console.log("PARENTS: ", parents);
       });
     },
     closeFolder: (state, action: PayloadAction<string>) => {

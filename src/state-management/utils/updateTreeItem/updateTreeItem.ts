@@ -1,17 +1,18 @@
-import { Item } from "../../../../types";
+export type UpdateFunction<T extends { id: string; children?: T[] }> = (
+  item: T,
+  parents: T[]
+) => void;
 
-type UpdateFunction<T> = (item: T, parents: T[]) => void;
-
-const makeUpdateTreeItem = () => {
+const makeUpdateTreeItem = <T extends { id: string; children?: T[] }>() => {
   let _found = false;
-  let _parents: Item[] = [];
+  let _parents: T[] = [];
 
   return (() => {
     // (1)
     const _updateTreeItem = (
-      items: Item[],
+      items: T[],
       id: string,
-      updateFn: UpdateFunction<Item>
+      updateFn: UpdateFunction<T>
     ) => {
       for (let i = 0; i < items.length && !_found; i++) {
         const item = items[i];
@@ -34,7 +35,7 @@ const makeUpdateTreeItem = () => {
       }
     };
 
-    return (items: Item[], id: string, updateFn: UpdateFunction<Item>) => {
+    return (items: T[], id: string, updateFn: UpdateFunction<T>) => {
       // (2)
       _found = false;
       _parents = [];
@@ -43,7 +44,7 @@ const makeUpdateTreeItem = () => {
   })();
 };
 
-export default makeUpdateTreeItem();
+export default makeUpdateTreeItem; // (3)
 
 /* 
 This recursive function system needs the "found" variable in order to short-circuit
@@ -54,4 +55,8 @@ the closure variables after each "makeUpdateTreeItem()" call - at each export;
 
 (2) - another level of function encapsulation is needed because we need to reset the closure
 variables after each call.
+
+(3) - we export it like this instead of makeUpdateTreeItem() directly because we need to pass in type 
+generics in the index.ts file. Otherwise, the generic "T" type isn't picked up by TS - see index.ts file
+for details.
 */
