@@ -8,10 +8,17 @@ type Props = {
   name: string;
   id: string;
   active?: boolean;
+  onClick: (id: string) => void;
   onCloseButtonClick: (itemId: string) => void;
 };
 
-export const Tab = ({ id, name, active, onCloseButtonClick }: Props) => {
+export const Tab = ({
+  id,
+  name,
+  active,
+  onClick,
+  onCloseButtonClick,
+}: Props) => {
   const [hasEllipsis, setHasEllipsis] = useState(false);
   const containerRef = useRef<HTMLLIElement>(null);
 
@@ -27,10 +34,18 @@ export const Tab = ({ id, name, active, onCloseButtonClick }: Props) => {
     onCloseButtonClick(id);
   };
 
+  const handleClick = () => {
+    onClick(id);
+  };
+
   const getAdditionalProps = () => (hasEllipsis ? { title: name } : {});
 
   return (
-    <li className={`dtx__tab ${active ? "active" : ""}`} ref={containerRef}>
+    <li
+      className={`dtx__tab ${active ? "active" : ""}`}
+      ref={containerRef}
+      onClick={handleClick}
+    >
       <Link to={`/${id}`} {...getAdditionalProps()}>
         {name}
       </Link>
