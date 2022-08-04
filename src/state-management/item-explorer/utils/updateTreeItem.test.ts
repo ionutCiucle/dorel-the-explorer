@@ -46,7 +46,6 @@ describe("state-management | item-explorer | utils", () => {
       const itemToFind = mockItems[0].children![0].children![0];
       const parentTrail = [mockItems[0].id, mockItems[0].children![0].id];
 
-      console.log(itemToFind.id);
       updateTreeItem(mockItems, itemToFind.id, updateSpy);
 
       expect(updateSpy).toHaveBeenCalledWith(itemToFind, parentTrail);
