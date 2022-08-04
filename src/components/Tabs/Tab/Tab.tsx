@@ -15,6 +15,7 @@ export const Tab = ({ id, name, active, onCloseButtonClick }: Props) => {
   const [hasEllipsis, setHasEllipsis] = useState(false);
   const containerRef = useRef<HTMLLIElement>(null);
 
+  // TODO: Move the ellipsis logic to a Text component and use it whenever you need to cover truncating text
   useEffect(() => {
     const anchorEl = elementHasEllipsis(
       containerRef.current?.querySelector("a") as HTMLElement
