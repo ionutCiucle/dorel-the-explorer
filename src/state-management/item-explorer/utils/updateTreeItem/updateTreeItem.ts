@@ -1,43 +1,43 @@
 import { Item } from "../../../../types";
 
-type UpdateFunction = (item: Item, parentTrail: string[]) => void;
+type UpdateFunction<T> = (item: T, parents: T[]) => void;
 
 const makeUpdateTreeItem = () => {
   let _found = false;
-  let _parentTrail: string[] = [];
+  let _parents: Item[] = [];
 
   return (() => {
     // (1)
     const _updateTreeItem = (
       items: Item[],
       id: string,
-      updateFn: UpdateFunction
+      updateFn: UpdateFunction<Item>
     ) => {
       for (let i = 0; i < items.length && !_found; i++) {
         const item = items[i];
 
         if (item.id === id) {
-          updateFn(item, _parentTrail);
+          updateFn(item, _parents);
           _found = true;
 
           continue;
         } else {
           if (item.children) {
-            _parentTrail.push(item.id);
+            _parents.push(item);
             _updateTreeItem(item.children, id, updateFn);
           }
 
           if (!_found && i === items.length - 1) {
-            _parentTrail.splice(i, 1);
+            _parents.splice(i, 1);
           }
         }
       }
     };
 
-    return (items: Item[], id: string, updateFn: UpdateFunction) => {
+    return (items: Item[], id: string, updateFn: UpdateFunction<Item>) => {
       // (2)
       _found = false;
-      _parentTrail = [];
+      _parents = [];
       _updateTreeItem(items, id, updateFn);
     };
   })();

@@ -43,7 +43,7 @@ describe("updateTreeItem()", () => {
   it("should detect item and parent hierarchy", () => {
     const updateSpy = jest.fn();
     const itemToFind = mockItems[0].children![0].children![0];
-    const parentTrail = [mockItems[0].id, mockItems[0].children![0].id];
+    const parentTrail = [mockItems[0], mockItems[0].children![0]];
 
     updateTreeItem(mockItems, itemToFind.id, updateSpy);
 
@@ -53,7 +53,7 @@ describe("updateTreeItem()", () => {
   it("should remove an element from the parent trail, if its children don't match the id", () => {
     const updateSpy = jest.fn();
     const itemToFind = mockItems[0].children![1];
-    const parentTrail = [mockItems[0].id];
+    const parentTrail = [mockItems[0]];
 
     updateTreeItem(mockItems, itemToFind.id, updateSpy);
 
