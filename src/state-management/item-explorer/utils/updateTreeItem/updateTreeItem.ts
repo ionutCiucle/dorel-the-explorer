@@ -1,4 +1,4 @@
-import { Item } from "../../../types";
+import { Item } from "../../../../types";
 
 type UpdateFunction = (item: Item, parentTrail: string[]) => void;
 
@@ -47,11 +47,11 @@ export default makeUpdateTreeItem();
 
 /* 
 This recursive function system needs the "found" variable in order to short-circuit
-its calls once the result has been found (the parentTrail property depends on this).
+its calls once the result has been found - the "parentTrail" property depends on this.
 
-(1) - this level of encapsulation is needed because we need to get fresh copies of 
-the closure variables after each make..() call - at each export;
+(1) - this level of function encapsulation is needed because we need to get fresh copies of 
+the closure variables after each "makeUpdateTreeItem()" call - at each export;
 
-(2) - this level of encapsulation is needed because we need to reset the closure
+(2) - another level of function encapsulation is needed because we need to reset the closure
 variables after each call.
 */
