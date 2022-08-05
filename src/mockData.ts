@@ -39,7 +39,7 @@ export const navItems: Item[] = [
       },
       {
         id: "XXX__0__2",
-        name: "Apple",
+        name: "Pear",
         type: ItemType.File,
         open: false,
         // children: [],

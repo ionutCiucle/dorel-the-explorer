@@ -5,10 +5,16 @@ import "./Tabs.scss";
 type Props = {
   items: TabItem[];
   activeItemId: string;
+  onTabClick: (itemId: string) => void;
   onTabCloseButtonClick: (id: string) => void;
 };
 
-export const Tabs = ({ items, activeItemId, onTabCloseButtonClick }: Props) => {
+export const Tabs = ({
+  items,
+  activeItemId,
+  onTabClick,
+  onTabCloseButtonClick,
+}: Props) => {
   return (
     <ul className="dtx__tabs">
       {items.map(({ id, name }) => (
@@ -17,6 +23,7 @@ export const Tabs = ({ items, activeItemId, onTabCloseButtonClick }: Props) => {
           name={name}
           key={id}
           active={id === activeItemId}
+          onClick={onTabClick}
           onCloseButtonClick={onTabCloseButtonClick}
         />
       ))}

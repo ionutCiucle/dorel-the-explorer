@@ -13,6 +13,10 @@
   background-color: $dutch-white;
   transition: background-color 0.05s linear;
 
+  &.highlighted {
+    background-color: darken($dutch-white, 5%);
+  }
+
   &:hover {
     background-color: darken($dutch-white, 10%);
   }

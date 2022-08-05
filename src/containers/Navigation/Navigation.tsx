@@ -10,6 +10,7 @@ import {
   addTab,
   removeTab,
 } from "../../state-management/item-explorer/tabSlice";
+import { selectTab } from "../../state-management/item-explorer/actions";
 import {
   openFolder,
   closeFolder,
@@ -52,10 +53,15 @@ export const Navigation = () => {
     dispatch(removeTab(tabId));
   };
 
+  const handleTabClick = (itemId: string) => {
+    dispatch(selectTab(itemId));
+  };
+
   return (
     <div className="dtx__navigation">
       <SideNavigation
         items={navigationItems}
+        highlightedItemId={itemId!}
         onClickNavigationItem={handleNavigationItemClick}
         loading={loadingNavigationItems}
       />
@@ -63,6 +69,7 @@ export const Navigation = () => {
         <Tabs
           items={tabItems}
           activeItemId={itemId!}
+          onTabClick={handleTabClick}
           onTabCloseButtonClick={handleTabCloseButtonClick}
         />
         <ObjectDetail itemId={itemId!} />
