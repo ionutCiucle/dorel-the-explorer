@@ -28,8 +28,8 @@ const makeUpdateTreeItem = <T extends { id: string; children?: T[] }>() => {
             _updateTreeItem(item.children, id, updateFn);
           }
 
-          if (!_found && i === items.length - 1) {
-            _parents.splice(i, 1);
+          if (!_found && _parents[_parents.length - 1] === item) {
+            _parents.splice(_parents.length - 1, 1);
           }
         }
       }
