@@ -5,7 +5,8 @@ import OptionMenu from "../../OptionMenu";
 import Portal from "../../Portal";
 import { useMenuCoordinates } from "./hooks";
 import { Item } from "../../../types";
-import "./NavigationItem.scss";
+import { ItemType } from "../../../enums";
+import styles from "./NavigationItem.module.scss";
 
 export type Props = Item & {
   highlighted?: boolean;
@@ -26,39 +27,35 @@ const NavigationItem = ({
 
   const handleOptionButtonClick = (event: MouseEvent) => {
     event.stopPropagation();
-    setShowOptionMenu(true);
+
+    if (type === ItemType.Folder) {
+      setShowOptionMenu(true);
+    }
   };
+
   const handleClickOutsideOptionMenu = () => {
     setShowOptionMenu(false);
   };
 
   return (
     <div
-      className={`dtx__navigation-item ${highlighted ? "highlighted" : ""}`}
+      className={`${styles.container} ${highlighted ? "highlighted" : ""}`}
       onClick={() => onClick({ id, name, type, open })}
     >
-      <div className="dtx__navigation-item__left">
-        <ItemIcon
-          open={open}
-          type={type}
-          className="dtx__navigation-item__icon"
-        />
+      <div className={styles.left}>
+        <ItemIcon open={open} type={type} className={styles.icon} />
         <h3>{name}</h3>
       </div>
-      <div className="dtx__navigation-item__menu-section" ref={menuSectionRef}>
+      <div ref={menuSectionRef}>
         <AiOutlineMore
-          className="dtx__navigation-item__context-menu-icon"
+          className={styles.contextMenuIcon}
           onClick={handleOptionButtonClick}
         />
         {showOptionMenu && (
           <Portal>
-            <div
-              className="dtx__navigation-item__menu-section__menu-container"
-              style={{ left: menuX, top: menuY, position: "absolute" }}
-            >
+            <div style={{ left: menuX, top: menuY, position: "absolute" }}>
               <OptionMenu
-                className="dtx__navigation-item__menu-section__option-menu"
-                labels={["Add Item", "Remove Item"]}
+                labels={["Add File", "Remove Folder"]}
                 onClickOption={(label: string) => {}}
                 onClickOutside={handleClickOutsideOptionMenu}
               />

@@ -1,6 +1,8 @@
+import { style } from "@mui/system";
 import { SyntheticEvent, useEffect, useRef } from "react";
 import { EventType } from "../../enums";
-import "./OptionMenu.scss";
+// import "./OptionMenu.scss";
+import styles from "./OptionMenu.module.scss";
 
 type Props = {
   labels: string[];
@@ -37,9 +39,13 @@ export const OptionMenu = ({
   }, []);
 
   return (
-    <ul className={`dtx__option-menu ${className}`} ref={containerRef}>
+    <ul className={styles.container} ref={containerRef}>
       {labels.map((label, index) => (
-        <li key={index} onClick={getOptionClickHandler(label)}>
+        <li
+          className={styles.item}
+          key={index}
+          onClick={getOptionClickHandler(label)}
+        >
           {label}
         </li>
       ))}
