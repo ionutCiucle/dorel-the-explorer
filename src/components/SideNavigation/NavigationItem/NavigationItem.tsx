@@ -3,6 +3,7 @@ import { AiOutlineMore } from "react-icons/ai";
 import ItemIcon from "../../ItemIcon";
 import OptionMenu from "../../OptionMenu";
 import Portal from "../../Portal";
+import { useMenuCoordinates } from "./hooks";
 import { Item } from "../../../types";
 import "./NavigationItem.scss";
 
@@ -20,10 +21,8 @@ const NavigationItem = ({
   onClick,
 }: Props) => {
   const [showOptionMenu, setShowOptionMenu] = useState(false);
-  const [menuX, setMenuX] = useState(0);
-  const [menuY, setMenuY] = useState(0);
-
   const menuSectionRef = useRef<HTMLDivElement>(null);
+  const [menuX, menuY] = useMenuCoordinates(menuSectionRef);
 
   const handleOptionButtonClick = () => {
     setShowOptionMenu(true);
@@ -31,14 +30,6 @@ const NavigationItem = ({
   const handleClickOutsideOptionMenu = () => {
     setShowOptionMenu(false);
   };
-
-  useLayoutEffect(() => {
-    if (menuSectionRef?.current) {
-      const { x, y } = menuSectionRef.current.getBoundingClientRect();
-      setMenuX(x);
-      setMenuY(y);
-    }
-  });
 
   return (
     <div
