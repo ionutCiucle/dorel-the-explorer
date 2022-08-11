@@ -4,7 +4,6 @@
 
 .container {
   @include flex(row, space-between, center);
-
   list-style: none;
   background-color: $ivory-dark;
   padding: $padding-S $padding-M;
@@ -17,55 +16,20 @@
 
 .anchor {
   @include ellipsis(100px);
-
   color: $grey1;
   text-decoration: none;
   font-size: 14px;
 }
 
 .closeButton {
+  @include backgroundColorTransition;
   cursor: pointer;
   margin-left: $padding-S;
   color: $grey1;
   background-color: transparent;
-  @include backgroundColorTransition;
   padding: $padding-XS;
 
   &:hover {
     background-color: $grey-light;
   }
 }
-
-// .dtx__tab {
-// @include flex(row, space-between, center);
-
-// list-style: none;
-// background-color: $ivory-dark;
-// padding: $padding-S $padding-M;
-// margin-right: $padding-S;
-
-// &.active {
-//   background-color: $ivory;
-// }
-
-// a {
-//   @include ellipsis(100px);
-
-//   color: $grey1;
-//   text-decoration: none;
-//   font-size: 14px;
-// }
-
-//   .close-button {
-//     cursor: pointer;
-//     margin-left: $padding-S;
-//     color: $grey1;
-//     background-color: transparent;
-//     @include backgroundColorTransition;
-//     padding: $padding-XS;
-
-//     &:hover {
-//       background-color: $grey-light;
-//     }
-//   }
-// }
