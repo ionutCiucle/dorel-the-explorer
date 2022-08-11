@@ -1,0 +1,11 @@
+@import "../../styles/mixins.scss";
+
+.dtx__option-menu {
+  @include flex(column, flex-start, flex-start);
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}

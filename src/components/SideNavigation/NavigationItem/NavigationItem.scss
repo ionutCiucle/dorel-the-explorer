@@ -3,7 +3,9 @@
 @import "../../../styles/colors.scss";
 
 .dtx__navigation-item {
-  @include flex(row, flex-start, center);
+  $bg-color-transition: background-color 0.05s linear;
+
+  @include flex(row, space-between, center);
   width: 100%;
   font-size: 12px;
   cursor: pointer;
@@ -11,7 +13,8 @@
   color: $grey1;
   user-select: none;
   background-color: $dutch-white;
-  transition: background-color 0.05s linear;
+  transition: $bg-color-transition;
+  position: relative;
 
   &.highlighted {
     background-color: darken($dutch-white, 5%);
@@ -19,6 +22,23 @@
 
   &:hover {
     background-color: darken($dutch-white, 10%);
+
+    .dtx__navigation-item__context-menu-icon {
+      // See why "&__context-menu-icon" doesn't work inside pseudoselector block
+      opacity: 1;
+
+      &:hover {
+        background-color: darken($dutch-white, 5%);
+      }
+    }
+  }
+
+  &__left {
+    @include flex(row, flex-start, center);
+
+    h3 {
+      margin: 0;
+    }
   }
 
   &__icon {
@@ -26,13 +46,21 @@
     margin-right: $padding-S;
   }
 
-  > h3 {
-    margin: 0;
+  &__context-menu-icon {
+    opacity: 0;
+    font-size: 30px;
+    padding: 0 5px;
+    background-color: transparent;
+    transition: $bg-color-transition;
   }
 
-  // border-bottom: 1px solid $grey1;
+  &__menu-section {
+    // position: relative;
 
-  // &:last-child {
-  //   border-bottom: none;
-  // }
+    // &__option-menu {
+    //   position: absolute;
+    //   bottom: 0;
+    //   right: 0;
+    // }
+  }
 }

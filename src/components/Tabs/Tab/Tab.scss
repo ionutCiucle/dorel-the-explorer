@@ -8,7 +8,7 @@
   list-style: none;
   background-color: $ivory-dark;
   padding: $padding-S $padding-M;
-  border-radius: 10px 10px 0 0;
+  margin-right: $padding-S;
 
   &.active {
     background-color: $ivory;
@@ -28,7 +28,6 @@
     color: $grey1;
     background-color: transparent;
     transition: background-color 0.075s linear;
-    border-radius: 2px;
     padding: $padding-XS;
 
     &:hover {

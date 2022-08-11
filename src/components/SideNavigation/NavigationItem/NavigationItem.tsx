@@ -1,5 +1,8 @@
-import React from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { AiOutlineMore } from "react-icons/ai";
 import ItemIcon from "../../ItemIcon";
+import OptionMenu from "../../OptionMenu";
+import Portal from "../../Portal";
 import { Item } from "../../../types";
 import "./NavigationItem.scss";
 
@@ -16,17 +19,61 @@ const NavigationItem = ({
   highlighted,
   onClick,
 }: Props) => {
+  const [showOptionMenu, setShowOptionMenu] = useState(false);
+  const [menuX, setMenuX] = useState(0);
+  const [menuY, setMenuY] = useState(0);
+
+  const menuSectionRef = useRef<HTMLDivElement>(null);
+
+  const handleOptionButtonClick = () => {
+    setShowOptionMenu(true);
+  };
+  const handleClickOutsideOptionMenu = () => {
+    setShowOptionMenu(false);
+  };
+
+  useLayoutEffect(() => {
+    if (menuSectionRef?.current) {
+      const { x, y } = menuSectionRef.current.getBoundingClientRect();
+      setMenuX(x);
+      setMenuY(y);
+    }
+  });
+
   return (
     <div
       className={`dtx__navigation-item ${highlighted ? "highlighted" : ""}`}
       onClick={() => onClick({ id, name, type, open })}
     >
-      <ItemIcon
-        open={open}
-        type={type}
-        className="dtx__navigation-item__icon"
-      />
-      <h3>{name}</h3>
+      <div className="dtx__navigation-item__left">
+        <ItemIcon
+          open={open}
+          type={type}
+          className="dtx__navigation-item__icon"
+        />
+        <h3>{name}</h3>
+      </div>
+      <div className="dtx__navigation-item__menu-section" ref={menuSectionRef}>
+        <AiOutlineMore
+          className="dtx__navigation-item__context-menu-icon"
+          onClick={handleOptionButtonClick}
+        />
+        {showOptionMenu && (
+          <Portal>
+            <div
+              className="dtx__navigation-item__menu-container"
+              style={{ left: menuX, top: menuY, position: "absolute" }}
+            >
+              <OptionMenu
+                className="dtx__navigation-item__menu-section__option-menu"
+                labels={["Add Item", "Remove Item"]}
+                onClickOption={(label: string) => {}}
+                onClickOutside={handleClickOutsideOptionMenu}
+              />
+            </div>
+          </Portal>
+        )}
+      </div>
     </div>
   );
 };
