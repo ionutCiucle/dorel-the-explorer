@@ -1,7 +1,6 @@
-import React from "react";
 import NavigationItem from "../NavigationItem";
 import { Item } from "../../../types";
-import "./NavigationTree.scss";
+import styles from "./NavigationTree.module.scss";
 
 export type Props = {
   items: Item[];
@@ -13,7 +12,7 @@ const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
   const renderItems = (items: Item[]) => {
     return items.map(({ id, type, open, name, children }) => {
       return (
-        <div className="nav-item-level" key={id}>
+        <div className={styles.itemLevel} key={id}>
           <NavigationItem
             id={id}
             type={type}
@@ -23,7 +22,7 @@ const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
             onClick={onClickItem}
           />
           {!!children && open && (
-            <div className="nav-item-level">{renderItems(children)}</div>
+            <div className={styles.itemLevel}>{renderItems(children)}</div>
           )}
         </div>
       );
@@ -31,8 +30,8 @@ const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
   };
 
   return (
-    <div className="dtx__navigation-tree">
-      <div className="nav-items">{renderItems(items)}</div>
+    <div className={styles.container}>
+      <div>{renderItems(items)}</div>
     </div>
   );
 };
