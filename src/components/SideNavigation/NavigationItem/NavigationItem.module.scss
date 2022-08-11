@@ -16,10 +16,6 @@ $bg-color-transition: background-color 0.05s linear;
   transition: $bg-color-transition;
   position: relative;
 
-  &.highlighted {
-    background-color: darken($dutch-white, 5%);
-  }
-
   &:hover {
     background-color: darken($dutch-white, 10%);
 
@@ -32,6 +28,10 @@ $bg-color-transition: background-color 0.05s linear;
       }
     }
   }
+}
+
+.highlighted {
+  background-color: darken($dutch-white, 5%);
 }
 
 .left {

@@ -39,7 +39,7 @@ const NavigationItem = ({
 
   return (
     <div
-      className={`${styles.container} ${highlighted ? "highlighted" : ""}`}
+      className={`${styles.container} ${highlighted ? styles.highlighted : ""}`}
       onClick={() => onClick({ id, name, type, open })}
     >
       <div className={styles.left}>
