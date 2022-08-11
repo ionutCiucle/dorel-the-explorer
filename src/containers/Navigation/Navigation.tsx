@@ -17,7 +17,6 @@ import {
 } from "../../state-management/item-explorer/navigationSlice";
 import { ItemType } from "../../enums";
 import { Item } from "../../types";
-// import "./Navigation.scss";
 import styles from "./Navigation.module.scss";
 
 export const Navigation = () => {

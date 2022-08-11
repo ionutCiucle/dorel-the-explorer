@@ -1,7 +1,5 @@
-import { style } from "@mui/system";
 import { SyntheticEvent, useEffect, useRef } from "react";
 import { EventType } from "../../enums";
-// import "./OptionMenu.scss";
 import styles from "./OptionMenu.module.scss";
 
 type Props = {
