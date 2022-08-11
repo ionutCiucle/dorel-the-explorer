@@ -27,7 +27,7 @@
     margin-left: $padding-S;
     color: $grey1;
     background-color: transparent;
-    transition: background-color 0.075s linear;
+    @include backgroundColorTransition;
     padding: $padding-XS;
 
     &:hover {

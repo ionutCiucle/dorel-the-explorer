@@ -13,5 +13,5 @@ export const useMenuCoordinates = (menuRef: RefObject<HTMLElement>) => {
     }
   });
 
-  return [menuX, menuY];
+  return { menuX, menuY };
 };

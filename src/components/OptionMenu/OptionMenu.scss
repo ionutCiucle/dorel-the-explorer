@@ -1,11 +1,31 @@
 @import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/constants.scss";
 
 .dtx__option-menu {
   @include flex(column, flex-start, flex-start);
   list-style: none;
+  background-color: lighten($dutch-white, 5%);
+  margin: 0;
+  padding: $padding-M;
+  font-size: 12px;
+  color: $grey1;
 
   li {
     margin: 0;
     padding: 0;
+    padding: $padding-M;
+    width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    @include backgroundColorTransition;
+
+    &:hover {
+      background-color: $dutch-white;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }

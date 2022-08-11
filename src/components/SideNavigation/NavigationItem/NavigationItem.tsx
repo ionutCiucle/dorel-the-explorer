@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 import { AiOutlineMore } from "react-icons/ai";
 import ItemIcon from "../../ItemIcon";
 import OptionMenu from "../../OptionMenu";
@@ -22,9 +22,10 @@ const NavigationItem = ({
 }: Props) => {
   const [showOptionMenu, setShowOptionMenu] = useState(false);
   const menuSectionRef = useRef<HTMLDivElement>(null);
-  const [menuX, menuY] = useMenuCoordinates(menuSectionRef);
+  const { menuX, menuY } = useMenuCoordinates(menuSectionRef);
 
-  const handleOptionButtonClick = () => {
+  const handleOptionButtonClick = (event: MouseEvent) => {
+    event.stopPropagation();
     setShowOptionMenu(true);
   };
   const handleClickOutsideOptionMenu = () => {
@@ -52,7 +53,7 @@ const NavigationItem = ({
         {showOptionMenu && (
           <Portal>
             <div
-              className="dtx__navigation-item__menu-container"
+              className="dtx__navigation-item__menu-section__menu-container"
               style={{ left: menuX, top: menuY, position: "absolute" }}
             >
               <OptionMenu

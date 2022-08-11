@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
+import { SyntheticEvent, useEffect, useRef } from "react";
 import { EventType } from "../../enums";
 import "./OptionMenu.scss";
 
@@ -19,14 +18,15 @@ export const OptionMenu = ({
   const containerRef = useRef<HTMLUListElement>(null);
 
   const handleClickOutside = ({ target }: MouseEvent) => {
-    // @ts-ignore
-    if (!containerRef!.contains(target)) {
+    if (!containerRef?.current?.contains(target as Node)) {
       onClickOutside();
     }
   };
-  const getOptionClickHandler = (label: string) => () => {
-    onClickOption(label);
-  };
+  const getOptionClickHandler =
+    (label: string) => (event: SyntheticEvent<HTMLLIElement>) => {
+      event.stopPropagation();
+      onClickOption(label);
+    };
 
   useEffect(() => {
     document.addEventListener(EventType.Click, handleClickOutside);
