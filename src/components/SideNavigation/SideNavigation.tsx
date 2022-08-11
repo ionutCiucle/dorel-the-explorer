@@ -5,6 +5,7 @@ import { Item } from "../../types";
 import styles from "./SideNavigation.module.scss";
 
 export type Props = {
+  className?: string;
   loading: boolean;
   items: Item[];
   highlightedItemId?: string;
@@ -12,13 +13,14 @@ export type Props = {
 };
 
 const SideNavigation = ({
+  className = "",
   loading,
   items,
   highlightedItemId,
   onClickNavigationItem,
 }: Props) => {
   return (
-    <nav className={styles.container}>
+    <nav className={`${styles.container} ${className}`}>
       {loading ? (
         <SkeletonLoader />
       ) : (

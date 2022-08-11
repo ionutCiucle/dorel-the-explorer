@@ -1,12 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Navigation from "../Navigation";
-import "./AppContainer.scss";
+// import "./AppContainer.scss";
+import styles from "./AppContainer.module.scss";
 
 export const AppContainer = () => {
   return (
-    <div className="dtx__app-container">
-      <header>Welcome to Dorel's File Exploring App!</header>
-      <section className="dtx__app-container__body">
+    <div className={styles.container}>
+      <header className={styles.header}>
+        Welcome to Dorel's File Exploring App!
+      </header>
+      <section className={styles.body}>
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route path=":itemId" element={<Navigation />} />

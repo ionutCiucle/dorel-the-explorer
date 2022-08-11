@@ -1,6 +1,6 @@
 import { TabItem } from "../../types";
 import Tab from "./Tab";
-import "./Tabs.scss";
+import styles from "./Tabs.module.scss";
 
 type Props = {
   items: TabItem[];
@@ -16,7 +16,7 @@ export const Tabs = ({
   onTabCloseButtonClick,
 }: Props) => {
   return (
-    <ul className="dtx__tabs">
+    <ul className={styles.container}>
       {items.map(({ id, name }) => (
         <Tab
           id={id}
