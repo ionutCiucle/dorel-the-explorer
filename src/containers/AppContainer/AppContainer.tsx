@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Navigation from "../Navigation";
-// import "./AppContainer.scss";
 import styles from "./AppContainer.module.scss";
 
 export const AppContainer = () => {
