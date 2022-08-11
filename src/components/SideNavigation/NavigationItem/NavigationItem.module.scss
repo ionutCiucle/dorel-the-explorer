@@ -10,27 +10,27 @@ $bg-color-transition: background-color 0.05s linear;
   font-size: 12px;
   cursor: pointer;
   padding: $padding-M;
-  color: $grey1;
+  color: $grey-base;
   user-select: none;
   background-color: $dutch-white;
   transition: $bg-color-transition;
   position: relative;
 
   &:hover {
-    background-color: darken($dutch-white, 10%);
+    background-color: $dutch-white-dark10;
 
-    .contextMenuIcon {
+    .itemIcon {
       opacity: 1;
 
       &:hover {
-        background-color: darken($dutch-white, 5%);
+        background-color: $dutch-white-dark5;
       }
     }
   }
 }
 
 .highlighted {
-  background-color: darken($dutch-white, 5%);
+  background-color: $dutch-white-dark5;
 }
 
 .left {
@@ -46,10 +46,15 @@ $bg-color-transition: background-color 0.05s linear;
   margin-right: $padding-S;
 }
 
-.contextMenuIcon {
+.itemIcon {
   opacity: 0;
   font-size: 30px;
   padding: 0 5px;
   background-color: transparent;
   transition: $bg-color-transition;
+  color: $grey-light10;
+
+  &:hover {
+    color: $grey-base;
+  }
 }

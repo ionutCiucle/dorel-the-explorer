@@ -5,18 +5,18 @@
 .container {
   @include flex(row, space-between, center);
   list-style: none;
-  background-color: $ivory-dark;
+  background-color: $dutch-white-light5;
   padding: $padding-S $padding-M;
   margin-right: $padding-S;
 }
 
 .active {
-  background-color: $ivory;
+  background-color: $dutch-white-light10;
 }
 
 .anchor {
   @include ellipsis(100px);
-  color: $grey1;
+  color: $grey-base;
   text-decoration: none;
   font-size: 14px;
 }
@@ -25,11 +25,11 @@
   @include backgroundColorTransition;
   cursor: pointer;
   margin-left: $padding-S;
-  color: $grey1;
+  color: $grey-base;
   background-color: transparent;
   padding: $padding-XS;
 
   &:hover {
-    background-color: $grey-light;
+    background-color: $grey-light55;
   }
 }

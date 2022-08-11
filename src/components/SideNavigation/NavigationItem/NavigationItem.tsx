@@ -1,5 +1,6 @@
 import { MouseEvent, useRef, useState } from "react";
-import { AiOutlineMore } from "react-icons/ai";
+import { AiOutlineMore, AiOutlineDelete } from "react-icons/ai";
+import { BiDotsVerticalRounded } from "react-icons/bi";
 import ItemIcon from "../../ItemIcon";
 import OptionMenu from "../../OptionMenu";
 import Portal from "../../Portal";
@@ -37,6 +38,20 @@ const NavigationItem = ({
     setShowOptionMenu(false);
   };
 
+  const renderIcons = () => (
+    <>
+      {type === ItemType.Folder && (
+        <BiDotsVerticalRounded
+          className={styles.itemIcon}
+          onClick={handleOptionButtonClick}
+        />
+      )}
+      {type === ItemType.File && (
+        <AiOutlineDelete className={styles.itemIcon} />
+      )}
+    </>
+  );
+
   return (
     <div
       className={`${styles.container} ${highlighted ? styles.highlighted : ""}`}
@@ -47,10 +62,7 @@ const NavigationItem = ({
         <h3>{name}</h3>
       </div>
       <div ref={menuSectionRef}>
-        <AiOutlineMore
-          className={styles.contextMenuIcon}
-          onClick={handleOptionButtonClick}
-        />
+        {renderIcons()}
         {showOptionMenu && (
           <Portal>
             <div style={{ left: menuX, top: menuY, position: "absolute" }}>

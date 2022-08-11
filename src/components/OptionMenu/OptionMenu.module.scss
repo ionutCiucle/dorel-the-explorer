@@ -5,11 +5,11 @@
 .container {
   @include flex(column, flex-start, flex-start);
   list-style: none;
-  background-color: lighten($dutch-white, 5%);
+  background-color: $dutch-white-light5;
   margin: 0;
   padding: $padding-M;
   font-size: 12px;
-  color: $grey1;
+  color: $grey-base;
 }
 
 .item {
