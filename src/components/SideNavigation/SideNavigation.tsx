@@ -2,7 +2,7 @@ import React from "react";
 import NavigationTree from "./NavigationTree";
 import SkeletonLoader from "./SkeletonLoader";
 import { Item } from "../../types";
-import "./SideNavigation.scss";
+import styles from "./SideNavigation.module.scss";
 
 export type Props = {
   loading: boolean;
@@ -18,7 +18,7 @@ const SideNavigation = ({
   onClickNavigationItem,
 }: Props) => {
   return (
-    <nav className="dtx__side-navigation">
+    <nav className={styles.container}>
       {loading ? (
         <SkeletonLoader />
       ) : (
