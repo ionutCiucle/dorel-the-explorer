@@ -1,6 +1,7 @@
 {
   "rules": {
     "testing-library/no-container": "OFF",
-    "testing-library/no-node-access": "OFF"
+    "testing-library/no-node-access": "OFF",
+    "@typescript-eslint/no-unused-vars": 2
   }
 }

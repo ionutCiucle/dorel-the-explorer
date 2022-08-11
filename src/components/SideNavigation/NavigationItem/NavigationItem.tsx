@@ -1,5 +1,5 @@
 import { MouseEvent, useRef, useState } from "react";
-import { AiOutlineMore, AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import ItemIcon from "../../ItemIcon";
 import OptionMenu from "../../OptionMenu";
