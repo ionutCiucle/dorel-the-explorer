@@ -2,16 +2,14 @@ import { SyntheticEvent, useEffect, useRef } from "react";
 import { EventType } from "../../enums";
 import styles from "./OptionMenu.module.scss";
 
-type Props = {
+export type Props = {
   labels: string[];
-  className?: string;
   onClickOption: (label: string) => void;
   onClickOutside: () => void;
 };
 
 export const OptionMenu = ({
   labels,
-  className = "",
   onClickOption,
   onClickOutside,
 }: Props) => {
