@@ -1,4 +1,4 @@
-import { MouseEvent, useRef, useState } from "react";
+import { MouseEvent, useRef } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import ItemIcon from "../../ItemIcon";
@@ -11,7 +11,10 @@ import styles from "./NavigationItem.module.scss";
 
 export type Props = Item & {
   highlighted?: boolean;
+  expandedOptionsItemId: string;
   onClick: (item: Item) => void;
+  onOptionButtonClick: (itemId: string, itemType: ItemType) => void;
+  onOptionMenuOutsideClick: (itemId: string) => void;
 };
 
 const NavigationItem = ({
@@ -20,22 +23,21 @@ const NavigationItem = ({
   type,
   open,
   highlighted,
+  expandedOptionsItemId,
   onClick,
+  onOptionButtonClick,
+  onOptionMenuOutsideClick,
 }: Props) => {
-  const [showOptionMenu, setShowOptionMenu] = useState(false);
   const menuSectionRef = useRef<HTMLDivElement>(null);
   const { menuX, menuY } = useMenuCoordinates(menuSectionRef);
 
   const handleOptionButtonClick = (event: MouseEvent) => {
     event.stopPropagation();
-
-    if (type === ItemType.Folder) {
-      setShowOptionMenu(true);
-    }
+    onOptionButtonClick(id, type);
   };
 
   const handleClickOutsideOptionMenu = () => {
-    setShowOptionMenu(false);
+    onOptionMenuOutsideClick(id);
   };
 
   const renderIcons = () => (
@@ -63,7 +65,7 @@ const NavigationItem = ({
       </div>
       <div ref={menuSectionRef}>
         {renderIcons()}
-        {showOptionMenu && (
+        {expandedOptionsItemId === id && (
           <Portal>
             <div style={{ left: menuX, top: menuY, position: "absolute" }}>
               <OptionMenu

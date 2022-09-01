@@ -20,6 +20,7 @@ export const OptionMenu = ({
       onClickOutside();
     }
   };
+
   const getOptionClickHandler =
     (label: string) => (event: SyntheticEvent<HTMLLIElement>) => {
       event.stopPropagation();

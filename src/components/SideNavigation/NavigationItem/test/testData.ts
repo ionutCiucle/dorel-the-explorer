@@ -7,5 +7,8 @@ export const getBaseProps = (): Props =>
     name: "Some name",
     type: ItemType.Folder,
     open: false,
+    expandedOptionsItemId: "",
     onClick: jest.fn(),
+    onOptionButtonClick: jest.fn(),
+    onOptionMenuOutsideClick: jest.fn(),
   });
