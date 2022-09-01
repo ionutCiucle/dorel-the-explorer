@@ -1,7 +1,5 @@
 import { MouseEvent, useRef } from "react";
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
-// import { FaPlus } from "react-icons/fa";
-// import { BiDotsVerticalRounded } from "react-icons/bi";
 import ItemIcon from "../../ItemIcon";
 import OptionMenu from "../../OptionMenu";
 import Portal from "../../Portal";
@@ -43,6 +41,7 @@ const NavigationItem = ({
 
   return (
     <div
+      data-testid={`navigation-item__${name}`}
       className={`${styles.container} ${highlighted ? styles.highlighted : ""}`}
       onClick={() => onClick({ id, name, type, open })}
     >
@@ -55,6 +54,7 @@ const NavigationItem = ({
           <AiOutlineDelete className={styles.itemIcon} />
         ) : (
           <AiOutlinePlus
+            data-testid="plus-icon"
             className={styles.itemIcon}
             onClick={handleOptionButtonClick}
           />

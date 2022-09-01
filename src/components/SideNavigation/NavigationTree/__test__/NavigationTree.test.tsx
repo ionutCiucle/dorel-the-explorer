@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { navItems } from "../../../../mockData";
 import NavigationTree from "../NavigationTree";
 import { getBaseProps } from "./testData";
@@ -40,5 +40,25 @@ describe("<NavigationTree/>", () => {
       type: ItemType.File,
       open: false,
     });
+  });
+
+  it("should display an OptionMenu when clicking on the + button of a folder", () => {
+    const props = getBaseProps({ items: navItems });
+
+    render(
+      <div>
+        <NavigationTree {...props} />
+        <div id="root">
+          <div>Dummy</div>
+        </div>
+      </div>
+    );
+
+    const folderItem = screen.getByTestId(`navigation-item__Fruit`);
+
+    fireEvent.click(within(folderItem).getByTestId("plus-icon"));
+
+    expect(screen.getByText("Add Folder")).toBeInTheDocument();
+    expect(screen.getByText("Add File")).toBeInTheDocument();
   });
 });
