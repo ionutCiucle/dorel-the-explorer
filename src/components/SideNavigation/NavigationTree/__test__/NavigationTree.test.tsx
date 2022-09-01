@@ -1,4 +1,3 @@
-import React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { navItems } from "../../../../mockData";
 import NavigationTree from "../NavigationTree";
@@ -52,6 +51,8 @@ describe("<NavigationTree/>", () => {
           <div id="root">{renderDummy && <div>Dummy</div>}</div>
         </div>
       );
+
+      return props;
     };
 
     const getPlusIconButton = () => {
@@ -79,6 +80,18 @@ describe("<NavigationTree/>", () => {
       fireEvent.click(screen.getByText("Dummy"));
 
       expect(screen.queryByText("Add Folder")).toBeNull();
+    });
+
+    it("should call its onAddFile, onAddFolder props when clicking on the Add File / Add Folder options in a Folder option menu", () => {
+      const { onAddFile, onAddFolder } = setup();
+
+      fireEvent.click(getPlusIconButton());
+
+      fireEvent.click(screen.getByText("Add File"));
+      expect(onAddFile).toHaveBeenCalled();
+
+      fireEvent.click(screen.getByText("Add Folder"));
+      expect(onAddFolder).toHaveBeenCalled();
     });
   });
 });

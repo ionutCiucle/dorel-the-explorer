@@ -8,9 +8,17 @@ export type Props = {
   items: Item[];
   highlightedItemId?: string;
   onClickItem: (item: Item) => void;
+  onAddFile: (parentId: string) => void;
+  onAddFolder: (parentId: string) => void;
 };
 
-const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
+const NavigationTree = ({
+  items,
+  highlightedItemId,
+  onClickItem,
+  onAddFile,
+  onAddFolder,
+}: Props) => {
   const [expandedOptionsItemId, setExpandedOptionsItemId] = useState("");
 
   const handleItemOptionButtonClick = (itemId: string, itemType: ItemType) => {
@@ -39,8 +47,8 @@ const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
             onClick={onClickItem}
             onOptionButtonClick={handleItemOptionButtonClick}
             onOptionMenuOutsideClick={handleItemOptionMenuOutsideClick}
-            onAddFile={(parentId) => {}}
-            onAddFolder={(parentId) => {}}
+            onAddFile={onAddFile}
+            onAddFolder={onAddFolder}
           />
           {!!children && open && (
             <div className={styles.itemLevel}>{renderItems(children)}</div>

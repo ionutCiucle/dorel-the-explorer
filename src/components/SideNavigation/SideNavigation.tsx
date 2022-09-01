@@ -28,6 +28,8 @@ const SideNavigation = ({
           items={items}
           highlightedItemId={highlightedItemId}
           onClickItem={onClickNavigationItem}
+          onAddFile={(parentId: string) => {}}
+          onAddFolder={(parendId: string) => {}}
         />
       )}
     </nav>
