@@ -1,0 +1,37 @@
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/constants.scss";
+@import "../../../../styles/mixins.scss";
+
+.container {
+  @include flex(row, space-between, center);
+  width: 100%;
+  background-color: $blue-munsell;
+  padding: $padding-M;
+  height: 53px;
+  position: relative;
+}
+
+.input {
+  @include flex(row, flex-start, center);
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background-color: $blue-munsell;
+  margin-right: $padding-M;
+  caret-color: $dutch-white-light10;
+  color: $dutch-white-light10;
+
+  &::placeholder {
+    color: $dutch-white-light10;
+  }
+}
+
+.folderIcon {
+  color: $dutch-white-light10;
+  margin-right: $padding-M;
+}
+
+.errorIcon {
+  color: lighten(red, 15%);
+}

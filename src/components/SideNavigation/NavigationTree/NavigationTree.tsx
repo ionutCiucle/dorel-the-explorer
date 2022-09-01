@@ -1,6 +1,6 @@
 import { useState } from "react";
-import NavigationItem from "../NavigationItem";
-import FolderCreationItem from "../FolderCreationItem";
+import NavigationItem from "./NavigationItem";
+import FolderCreationItem from "./FolderCreationItem";
 import { Item } from "../../../types";
 import styles from "./NavigationTree.module.scss";
 import { ItemType } from "../../../enums";
@@ -53,7 +53,10 @@ const NavigationTree = ({
               onAddFolder={onAddFolder}
             />
           ) : (
-            <FolderCreationItem />
+            <FolderCreationItem
+              externalErrorMessage="!!!"
+              onBlur={() => console.log("should close")}
+            />
           )}
           {!!children && open && (
             <div className={styles.itemLevel}>{renderItems(children)}</div>

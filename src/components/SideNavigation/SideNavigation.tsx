@@ -1,4 +1,3 @@
-import React from "react";
 import NavigationTree from "./NavigationTree";
 import SkeletonLoader from "./SkeletonLoader";
 import { Item } from "../../types";

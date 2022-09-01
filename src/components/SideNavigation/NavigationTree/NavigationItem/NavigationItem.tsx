@@ -1,11 +1,11 @@
 import { MouseEvent, useRef } from "react";
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
-import ItemIcon from "../../ItemIcon";
-import OptionMenu from "../../OptionMenu";
-import Portal from "../../Portal";
+import ItemIcon from "../../../ItemIcon";
+import OptionMenu from "../../../OptionMenu";
+import Portal from "../../../Portal";
 import { useMenuCoordinates } from "./hooks";
-import { Item } from "../../../types";
-import { ItemType } from "../../../enums";
+import { Item } from "../../../../types";
+import { ItemType } from "../../../../enums";
 import { ADD_FILE, ADD_FOLDER } from "./labels";
 import styles from "./NavigationItem.module.scss";
 
