@@ -1,13 +1,19 @@
 import { Item } from "./types";
 import { ItemType } from "./enums";
 
-export const navItems: Item[] = [
+export const navItems: Array<Item> = [
   {
     id: "XXX__0",
     name: "Fruit",
     type: ItemType.Folder,
     open: true,
     children: [
+      {
+        id: "xxx",
+        name: "",
+        type: ItemType.FolderPlaceholder,
+        open: false,
+      },
       {
         id: "XXX__0__0",
         name: "Orange",

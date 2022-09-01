@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavigationItem from "../NavigationItem";
+import FolderCreationItem from "../FolderCreationItem";
 import { Item } from "../../../types";
 import styles from "./NavigationTree.module.scss";
 import { ItemType } from "../../../enums";
@@ -37,19 +38,23 @@ const NavigationTree = ({
     return items.map(({ id, type, open, name, children }) => {
       return (
         <div className={styles.itemLevel} key={id}>
-          <NavigationItem
-            id={id}
-            type={type}
-            open={open}
-            name={name}
-            highlighted={highlightedItemId === id}
-            expandedOptionsItemId={expandedOptionsItemId}
-            onClick={onClickItem}
-            onOptionButtonClick={handleItemOptionButtonClick}
-            onOptionMenuOutsideClick={handleItemOptionMenuOutsideClick}
-            onAddFile={onAddFile}
-            onAddFolder={onAddFolder}
-          />
+          {type !== ItemType.FolderPlaceholder ? (
+            <NavigationItem
+              id={id}
+              type={type}
+              open={open}
+              name={name}
+              highlighted={highlightedItemId === id}
+              expandedOptionsItemId={expandedOptionsItemId}
+              onClick={onClickItem}
+              onOptionButtonClick={handleItemOptionButtonClick}
+              onOptionMenuOutsideClick={handleItemOptionMenuOutsideClick}
+              onAddFile={onAddFile}
+              onAddFolder={onAddFolder}
+            />
+          ) : (
+            <FolderCreationItem />
+          )}
           {!!children && open && (
             <div className={styles.itemLevel}>{renderItems(children)}</div>
           )}
