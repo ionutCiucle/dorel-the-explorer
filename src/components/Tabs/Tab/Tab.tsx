@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { elementHasEllipsis } from "../../../utils";
-import "./Tab.scss";
+import styles from "./Tab.module.scss";
 
 type Props = {
   name: string;
@@ -42,15 +42,15 @@ export const Tab = ({
 
   return (
     <li
-      className={`dtx__tab ${active ? "active" : ""}`}
+      className={`${styles.container} ${active ? styles.active : ""}`}
       ref={containerRef}
       onClick={handleClick}
     >
-      <Link to={`/${id}`} {...getAdditionalProps()}>
+      <Link to={`/${id}`} {...getAdditionalProps()} className={styles.anchor}>
         {name}
       </Link>
       <AiOutlineClose
-        className="close-button"
+        className={styles.closeButton}
         onClick={handleCloseButtonClick}
       />
     </li>

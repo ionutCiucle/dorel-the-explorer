@@ -1,5 +1,4 @@
-import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { navItems } from "../../../../mockData";
 import NavigationTree from "../NavigationTree";
 import { getBaseProps } from "./testData";
@@ -39,6 +38,60 @@ describe("<NavigationTree/>", () => {
       name: "Aubergine",
       type: ItemType.File,
       open: false,
+    });
+  });
+
+  describe("Option menu", () => {
+    const setup = (renderDummy?: boolean) => {
+      const props = getBaseProps({ items: navItems });
+
+      render(
+        <div>
+          <NavigationTree {...props} />
+          <div id="root">{renderDummy && <div>Dummy</div>}</div>
+        </div>
+      );
+
+      return props;
+    };
+
+    const getPlusIconButton = () => {
+      const folderItem = screen.getByTestId(`navigation-item__Fruit`);
+
+      return within(folderItem).getByTestId("plus-icon");
+    };
+
+    it("should display an OptionMenu when clicking on the + button of a folder", () => {
+      setup();
+
+      fireEvent.click(getPlusIconButton());
+
+      expect(screen.getByText("Add Folder")).toBeInTheDocument();
+      expect(screen.getByText("Add File")).toBeInTheDocument();
+    });
+
+    it("should unmount the OptionMenu portal when the user clicks outside of it", () => {
+      setup(true);
+
+      fireEvent.click(getPlusIconButton());
+
+      expect(screen.getByText("Add Folder")).toBeInTheDocument();
+
+      fireEvent.click(screen.getByText("Dummy"));
+
+      expect(screen.queryByText("Add Folder")).toBeNull();
+    });
+
+    it("should call its onAddFile, onAddFolder props when clicking on the Add File / Add Folder options in a Folder option menu", () => {
+      const { onAddFile, onAddFolder } = setup();
+
+      fireEvent.click(getPlusIconButton());
+
+      fireEvent.click(screen.getByText("Add File"));
+      expect(onAddFile).toHaveBeenCalled();
+
+      fireEvent.click(screen.getByText("Add Folder"));
+      expect(onAddFolder).toHaveBeenCalled();
     });
   });
 });

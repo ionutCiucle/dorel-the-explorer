@@ -1,0 +1,60 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/constants.scss";
+@import "../../../styles/colors.scss";
+
+$bg-color-transition: background-color 0.05s linear;
+
+.container {
+  @include flex(row, space-between, center);
+  width: 100%;
+  font-size: 12px;
+  cursor: pointer;
+  padding: $padding-M;
+  color: $grey-base;
+  user-select: none;
+  background-color: $dutch-white;
+  transition: $bg-color-transition;
+  position: relative;
+
+  &:hover {
+    background-color: $dutch-white-dark10;
+
+    .itemIcon {
+      opacity: 1;
+
+      &:hover {
+        background-color: $dutch-white-dark5;
+      }
+    }
+  }
+}
+
+.highlighted {
+  background-color: $dutch-white-dark5;
+}
+
+.left {
+  @include flex(row, flex-start, center);
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.icon {
+  font-size: 15px;
+  margin-right: $padding-S;
+}
+
+.itemIcon {
+  opacity: 0;
+  font-size: 30px;
+  padding: 0 5px;
+  background-color: transparent;
+  transition: $bg-color-transition;
+  color: $grey-light10;
+
+  &:hover {
+    color: $grey-base;
+  }
+}

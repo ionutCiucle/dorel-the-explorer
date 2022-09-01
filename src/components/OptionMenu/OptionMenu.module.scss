@@ -1,0 +1,31 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/constants.scss";
+
+.container {
+  @include flex(column, flex-start, flex-start);
+  list-style: none;
+  background-color: $dutch-white-light5;
+  margin: 0;
+  padding: $padding-M;
+  font-size: 12px;
+  color: $grey-base;
+}
+
+.item {
+  margin: 0;
+  padding: 0;
+  padding: $padding-M;
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  @include backgroundColorTransition;
+
+  &:hover {
+    background-color: $dutch-white;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

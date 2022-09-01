@@ -17,7 +17,7 @@ import {
 } from "../../state-management/item-explorer/navigationSlice";
 import { ItemType } from "../../enums";
 import { Item } from "../../types";
-import "./Navigation.scss";
+import styles from "./Navigation.module.scss";
 
 export const Navigation = () => {
   const dispatch = useAppDispatch();
@@ -58,14 +58,15 @@ export const Navigation = () => {
   };
 
   return (
-    <div className="dtx__navigation">
+    <div className={styles.container}>
       <SideNavigation
+        className={styles.nav}
         items={navigationItems}
         highlightedItemId={itemId!}
         onClickNavigationItem={handleNavigationItemClick}
         loading={loadingNavigationItems}
       />
-      <aside>
+      <aside className={styles.aside}>
         <Tabs
           items={tabItems}
           activeItemId={itemId!}

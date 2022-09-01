@@ -1,29 +1,57 @@
-import React from "react";
+import { useState } from "react";
 import NavigationItem from "../NavigationItem";
 import { Item } from "../../../types";
-import "./NavigationTree.scss";
+import styles from "./NavigationTree.module.scss";
+import { ItemType } from "../../../enums";
 
 export type Props = {
   items: Item[];
   highlightedItemId?: string;
   onClickItem: (item: Item) => void;
+  onAddFile: (parentId: string) => void;
+  onAddFolder: (parentId: string) => void;
 };
 
-const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
+const NavigationTree = ({
+  items,
+  highlightedItemId,
+  onClickItem,
+  onAddFile,
+  onAddFolder,
+}: Props) => {
+  const [expandedOptionsItemId, setExpandedOptionsItemId] = useState("");
+
+  const handleItemOptionButtonClick = (itemId: string, itemType: ItemType) => {
+    if (itemType === ItemType.Folder) {
+      setExpandedOptionsItemId(itemId);
+    }
+  };
+
+  const handleItemOptionMenuOutsideClick = (itemId: string) => {
+    if (itemId === expandedOptionsItemId) {
+      setExpandedOptionsItemId("");
+    }
+  };
+
   const renderItems = (items: Item[]) => {
     return items.map(({ id, type, open, name, children }) => {
       return (
-        <div className="nav-item-level" key={id}>
+        <div className={styles.itemLevel} key={id}>
           <NavigationItem
             id={id}
             type={type}
             open={open}
             name={name}
             highlighted={highlightedItemId === id}
+            expandedOptionsItemId={expandedOptionsItemId}
             onClick={onClickItem}
+            onOptionButtonClick={handleItemOptionButtonClick}
+            onOptionMenuOutsideClick={handleItemOptionMenuOutsideClick}
+            onAddFile={onAddFile}
+            onAddFolder={onAddFolder}
           />
           {!!children && open && (
-            <div className="nav-item-level">{renderItems(children)}</div>
+            <div className={styles.itemLevel}>{renderItems(children)}</div>
           )}
         </div>
       );
@@ -31,8 +59,8 @@ const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
   };
 
   return (
-    <div className="dtx__navigation-tree">
-      <div className="nav-items">{renderItems(items)}</div>
+    <div className={styles.container}>
+      <div>{renderItems(items)}</div>
     </div>
   );
 };

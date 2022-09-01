@@ -2,9 +2,10 @@ import React from "react";
 import NavigationTree from "./NavigationTree";
 import SkeletonLoader from "./SkeletonLoader";
 import { Item } from "../../types";
-import "./SideNavigation.scss";
+import styles from "./SideNavigation.module.scss";
 
 export type Props = {
+  className?: string;
   loading: boolean;
   items: Item[];
   highlightedItemId?: string;
@@ -12,13 +13,14 @@ export type Props = {
 };
 
 const SideNavigation = ({
+  className = "",
   loading,
   items,
   highlightedItemId,
   onClickNavigationItem,
 }: Props) => {
   return (
-    <nav className="dtx__side-navigation">
+    <nav className={`${styles.container} ${className}`}>
       {loading ? (
         <SkeletonLoader />
       ) : (
@@ -26,6 +28,8 @@ const SideNavigation = ({
           items={items}
           highlightedItemId={highlightedItemId}
           onClickItem={onClickNavigationItem}
+          onAddFile={(parentId: string) => {}}
+          onAddFolder={(parendId: string) => {}}
         />
       )}
     </nav>
