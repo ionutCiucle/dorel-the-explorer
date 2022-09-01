@@ -1,6 +1,7 @@
 import { MouseEvent, useRef } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
-import { BiDotsVerticalRounded } from "react-icons/bi";
+import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
+// import { FaPlus } from "react-icons/fa";
+// import { BiDotsVerticalRounded } from "react-icons/bi";
 import ItemIcon from "../../ItemIcon";
 import OptionMenu from "../../OptionMenu";
 import Portal from "../../Portal";
@@ -40,20 +41,6 @@ const NavigationItem = ({
     onOptionMenuOutsideClick(id);
   };
 
-  const renderIcons = () => (
-    <>
-      {type === ItemType.Folder && (
-        <BiDotsVerticalRounded
-          className={styles.itemIcon}
-          onClick={handleOptionButtonClick}
-        />
-      )}
-      {type === ItemType.File && (
-        <AiOutlineDelete className={styles.itemIcon} />
-      )}
-    </>
-  );
-
   return (
     <div
       className={`${styles.container} ${highlighted ? styles.highlighted : ""}`}
@@ -64,12 +51,19 @@ const NavigationItem = ({
         <h3>{name}</h3>
       </div>
       <div ref={menuSectionRef}>
-        {renderIcons()}
+        {type === ItemType.File ? (
+          <AiOutlineDelete className={styles.itemIcon} />
+        ) : (
+          <AiOutlinePlus
+            className={styles.itemIcon}
+            onClick={handleOptionButtonClick}
+          />
+        )}
         {expandedOptionsItemId === id && (
           <Portal>
             <div style={{ left: menuX, top: menuY, position: "absolute" }}>
               <OptionMenu
-                labels={["Add File", "Remove Folder"]}
+                labels={["Add File", "Add Folder"]}
                 onClickOption={(label: string) => {}}
                 onClickOutside={handleClickOutsideOptionMenu}
               />
