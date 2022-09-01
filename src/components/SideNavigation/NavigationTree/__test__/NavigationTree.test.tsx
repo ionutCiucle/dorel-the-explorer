@@ -42,7 +42,7 @@ describe("<NavigationTree/>", () => {
     });
   });
 
-  describe("* option menu", () => {
+  describe("Option menu", () => {
     const setup = (renderDummy?: boolean) => {
       const props = getBaseProps({ items: navItems });
 

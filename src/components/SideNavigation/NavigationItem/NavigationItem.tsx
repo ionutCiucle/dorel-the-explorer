@@ -6,12 +6,15 @@ import Portal from "../../Portal";
 import { useMenuCoordinates } from "./hooks";
 import { Item } from "../../../types";
 import { ItemType } from "../../../enums";
+import { ADD_FILE, ADD_FOLDER } from "./labels";
 import styles from "./NavigationItem.module.scss";
 
 export type Props = Item & {
   highlighted?: boolean;
   expandedOptionsItemId: string;
   onClick: (item: Item) => void;
+  onAddFolder: (itemId: string) => void;
+  onAddFile: (itemId: string) => void;
   onOptionButtonClick: (itemId: string, itemType: ItemType) => void;
   onOptionMenuOutsideClick: (itemId: string) => void;
 };
@@ -26,6 +29,8 @@ const NavigationItem = ({
   onClick,
   onOptionButtonClick,
   onOptionMenuOutsideClick,
+  onAddFile,
+  onAddFolder,
 }: Props) => {
   const menuSectionRef = useRef<HTMLDivElement>(null);
   const { menuX, menuY } = useMenuCoordinates(menuSectionRef);
@@ -37,6 +42,22 @@ const NavigationItem = ({
 
   const handleClickOutsideOptionMenu = () => {
     onOptionMenuOutsideClick(id);
+  };
+
+  const handleOptionMenuClick = (label: string) => {
+    switch (label) {
+      case ADD_FILE: {
+        onAddFile(id);
+        break;
+      }
+      case ADD_FOLDER: {
+        onAddFolder(id);
+        break;
+      }
+      default: {
+        console.warn(`NavigationItem: Unhandled option menu label: ${label}.`);
+      }
+    }
   };
 
   return (
@@ -63,8 +84,8 @@ const NavigationItem = ({
           <Portal>
             <div style={{ left: menuX, top: menuY, position: "absolute" }}>
               <OptionMenu
-                labels={["Add File", "Add Folder"]}
-                onClickOption={(label: string) => {}}
+                labels={[ADD_FILE, ADD_FOLDER]}
+                onClickOption={handleOptionMenuClick}
                 onClickOutside={handleClickOutsideOptionMenu}
               />
             </div>

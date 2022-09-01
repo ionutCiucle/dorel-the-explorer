@@ -39,6 +39,8 @@ const NavigationTree = ({ items, highlightedItemId, onClickItem }: Props) => {
             onClick={onClickItem}
             onOptionButtonClick={handleItemOptionButtonClick}
             onOptionMenuOutsideClick={handleItemOptionMenuOutsideClick}
+            onAddFile={(parentId) => {}}
+            onAddFolder={(parentId) => {}}
           />
           {!!children && open && (
             <div className={styles.itemLevel}>{renderItems(children)}</div>
