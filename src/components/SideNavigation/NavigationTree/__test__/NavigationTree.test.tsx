@@ -42,23 +42,43 @@ describe("<NavigationTree/>", () => {
     });
   });
 
-  it("should display an OptionMenu when clicking on the + button of a folder", () => {
-    const props = getBaseProps({ items: navItems });
+  describe("* option menu", () => {
+    const setup = (renderDummy?: boolean) => {
+      const props = getBaseProps({ items: navItems });
 
-    render(
-      <div>
-        <NavigationTree {...props} />
-        <div id="root">
-          <div>Dummy</div>
+      render(
+        <div>
+          <NavigationTree {...props} />
+          <div id="root">{renderDummy && <div>Dummy</div>}</div>
         </div>
-      </div>
-    );
+      );
+    };
 
-    const folderItem = screen.getByTestId(`navigation-item__Fruit`);
+    const getPlusIconButton = () => {
+      const folderItem = screen.getByTestId(`navigation-item__Fruit`);
 
-    fireEvent.click(within(folderItem).getByTestId("plus-icon"));
+      return within(folderItem).getByTestId("plus-icon");
+    };
 
-    expect(screen.getByText("Add Folder")).toBeInTheDocument();
-    expect(screen.getByText("Add File")).toBeInTheDocument();
+    it("should display an OptionMenu when clicking on the + button of a folder", () => {
+      setup();
+
+      fireEvent.click(getPlusIconButton());
+
+      expect(screen.getByText("Add Folder")).toBeInTheDocument();
+      expect(screen.getByText("Add File")).toBeInTheDocument();
+    });
+
+    it("should unmount the OptionMenu portal when the user clicks outside of it", () => {
+      setup(true);
+
+      fireEvent.click(getPlusIconButton());
+
+      expect(screen.getByText("Add Folder")).toBeInTheDocument();
+
+      fireEvent.click(screen.getByText("Dummy"));
+
+      expect(screen.queryByText("Add Folder")).toBeNull();
+    });
   });
 });
